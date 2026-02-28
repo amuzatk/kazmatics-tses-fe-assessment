@@ -13,7 +13,10 @@ type Course = {
 export default function CourseCard({ course }: { course: Course }) {
   return (
     <Link href={`/courses/${course.id}`} className="block group">
-      <div className="bg-[#f7f7f7] rounded-xl overflow-hidden max-h-67.25 hover:shadow-md transition-shadow">
+      <div 
+    //   className="bg-[#f7f7f7] rounded-xl overflow-hidden max-h-67.25 hover:shadow-md transition-shadow"
+    className="bg-[#f7f7f7] rounded-xl overflow-hidden hover:shadow-md transition-shadow"
+      >
         <div className="relative h-32">
           <Image
             src={course.image}

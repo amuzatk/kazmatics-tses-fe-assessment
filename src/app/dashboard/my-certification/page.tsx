@@ -1,3 +1,4 @@
+// app/dashboard/my-certification/page.tsx
 export default function CertificationPage() {
   return (
     <div className="">

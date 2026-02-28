@@ -1,4 +1,4 @@
-// app/dashboard/page.tsx  ← Screen 1
+// app/dashboard/page.tsx
 export default function DashboardPage() {
   return (
     <div className="">

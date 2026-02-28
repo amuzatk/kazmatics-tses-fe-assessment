@@ -1,3 +1,145 @@
+// src/components/layout/Sidebar.tsx
+'use client';
+
+import Link from 'next/link';
+import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import { Menu, Drawer } from 'antd';
+import { MenuOutlined } from '@ant-design/icons';
+import { useState } from 'react';
+
+const navItems = [
+  { key: '/dashboard', label: 'Dashboard', icon: '/icons/dashboard.png' },
+  { key: '/dashboard/courses', label: 'Courses/Materials', icon: '/icons/courses.png' },
+  { key: '/dashboard/classes', label: 'Classes', icon: '/icons/classes.png' },
+  { key: '/dashboard/assessments', label: 'Assessments', icon: '/icons/assessments.png' },
+  { key: '/dashboard/my-certification', label: 'My Certification', icon: '/icons/certification.png' },
+  { key: '/dashboard/settings', label: 'Settings', icon: '/icons/settings.png' },
+];
+
+export default function Sidebar() {
+  const pathname = usePathname();
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const menuItems = navItems.map((item) => ({
+    key: item.key,
+    icon: (
+      <Image
+        src={item.icon}
+        alt=""
+        width={20}
+        height={20}
+        className={pathname.startsWith(item.key) ? 'brightness-0 invert' : ''}
+      />
+    ),
+    label: (
+      <Link href={item.key} onClick={() => setDrawerOpen(false)}>
+        {item.label}
+      </Link>
+    ),
+  }));
+
+  return (
+    <>
+      {/* Desktop Sidebar – restored original look + dynamic active */}
+      <aside 
+    //   className="hidden lg:flex lg:w-64 lg:flex-col lg:bg-white h-screen border-r border-[#F0F0F0]"
+    className="hidden lg:flex lg:w-64 lg:flex-col "
+      >
+        <div className="h-18.25 flex items-center px-4 border-b border-[#F0F0F0]">
+          <Image src="/icons/Soludesks_Logo.png" width={136} height={36} alt="Soludesks Logo" />
+        </div>
+
+              {/* Navigation */}
+        <nav 
+        // className="flex-1 px-4 py-6"
+        className="flex-1 border-r border-[#F0F0F0] px-4"
+        >
+          <ul 
+        //   className="space-y-2"
+        className="space-y-2 mt-7"
+          >
+            {navItems.map((item) => (
+              <li key={item.label}>
+                <Link
+                  href={item.key}
+                  className={`
+                    flex items-center gap-3 px-4 py-3 
+                    font-inter text-[14px] leading-5
+                    transition-colors
+                    ${
+                      pathname.startsWith(item.key)
+                        ? 'bg-[#EAF3FF] text-[#0A60E1] border-l-2 border-[#0A60E1]'
+                        : 'text-[#636363] hover:bg-gray-50'
+                    }
+                  `}
+
+                //   className={`
+                //     flex items-center gap-3 px-4 py-3
+                //     font-inter text-[14px] leading-5
+                //     transition-colors duration-200
+                //     ${
+                //       item.active
+                //         ? "bg-[#EAF3FF] text-[#0A60E1] border-l-2 border-[#0A60E1]"
+                //         : " text-[#636363] hover:bg-gray-50"
+                //     }
+                //   `}
+                >
+                  <Image
+                    src={item.icon}
+                    alt=""
+                    width={20}
+                    height={20}
+                    className={pathname.startsWith(item.key) ? 'brightness-0 invert' : ''}
+                  />
+                  <span>{item.label}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </aside>
+
+      {/* Mobile Hamburger */}
+      <div className="lg:hidden fixed top-4 left-4 z-50">
+        <button
+          onClick={() => setDrawerOpen(true)}
+          className="p-2 bg-white rounded-lg shadow-md"
+        >
+          <MenuOutlined className="text-xl text-[#0A60E1]" />
+        </button>
+      </div>
+
+      {/* Drawer for mobile */}
+      <Drawer
+        placement="left"
+        onClose={() => setDrawerOpen(false)}
+        open={drawerOpen}
+        size="default"
+        closable={false}
+        styles={{ body: { padding: 0 } }}
+      >
+        <div className="h-18.25 flex items-center px-4 border-b border-[#F0F0F0]">
+          <Image src="/icons/Soludesks_Logo.png" width={136} height={36} alt="Soludesks Logo" />
+        </div>
+        <Menu
+          mode="inline"
+          selectedKeys={[pathname]}
+          items={menuItems}
+          className="border-none mt-4 [&_.ant-menu-item-selected]:bg-[#EAF3FF] [&_.ant-menu-item-selected]:text-[#0A60E1]"
+        />
+      </Drawer>
+    </>
+  );
+}
+
+
+
+
+
+
+
+// //src/components/layout/sidebar.tsx PREVIOUS VERSION
 // import Link from "next/link";
 // import {
 //   BookOpen,
@@ -11,52 +153,48 @@
 
 // const navItems = [
 //   { icon: LayoutDashboard, label: "Dashboard", href: "/dashboard", active: false },
-//   { icon: BookOpen, label: "Courses/Materials", href: "/courses", active: true },
-//   { icon: Users, label: "Classes", href: "/classes" },
-//   { icon: FileCheck, label: "Assessments", href: "/assessments" },
-//   { icon: Award, label: "My Certification", href: "/my-certification" },
-//   { icon: Settings, label: "Settings", href: "/settings" },
+//   { icon: BookOpen, label: "Courses/Materials", href: "/dashboard/courses", active: true },
+//   { icon: Users, label: "Classes", href: "/dashboard/classes" },
+//   { icon: FileCheck, label: "Assessments", href: "/dashboard/assessments" },
+//   { icon: Award, label: "My Certification", href: "/dashboard/my-certification" },
+//   { icon: Settings, label: "Settings", href: "/dashboard/settings" },
 // ];
 
 // export default function Sidebar() {
 //   return (
-//     <aside className="w-64 bg-white flex flex-col border-r border-[#F0F0F0]">
-      
-//       {/* Logo Section */}
-//       <div className="mt-5 px-4 border-b border-[#F0F0F0] pb-4">
-//         <Image
-//           src="/icons/Soludesks_Logo.png"
-//           alt="Soludesks Logo"
-//           width={200}
-//           height={60}
-//           className="h-10 w-auto"
-//           priority
-//         />
+//     <aside className="w-64 flex flex-col ">
+//       {/* Logo */}
+//       <div className="h-18.25 flex  px-4 border-b border-[#F0F0F0]">
+//         <Image src={"/icons/Soludesks_Logo.png"} width={136} height={36}  alt={"Soludesks Logo"}   />
 //       </div>
 
 //       {/* Navigation */}
-//       <nav className="flex-1 mt-8 px-4">
-//         <ul className="space-y-5">
+//       <nav className="flex-1 border-r border-[#F0F0F0] px-4">
+//         <ul 
+//         // className="space-y-5 mt-8"
+//         className="space-y-2 mt-7"
+//         >
 //           {navItems.map((item) => {
 //             const Icon = item.icon;
 
 //             return (
+//                 // <></>
 //               <li key={item.label}>
 //                 <Link
 //                   href={item.href}
 //                   className={`
 //                     flex items-center gap-3 px-4 py-3
-//                     font-inter text-[14px] font-semibold leading-5
+//                     font-inter text-[14px] leading-5
 //                     transition-colors duration-200
 //                     ${
 //                       item.active
-//                         ? "bg-[#EAF3FF] text-[#0A60E1] border-l-[1.5px] border-[#0A60E1]"
-//                         : "bg-white text-[#636363] hover:bg-gray-50"
+//                         ? "bg-[#EAF3FF] text-[#0A60E1] border-l-2 border-[#0A60E1]"
+//                         : " text-[#636363] hover:bg-gray-50"
 //                     }
 //                   `}
 //                 >
 //                   <Icon className="h-5 w-5 shrink-0" />
-//                   <span>{item.label}</span>
+//                   <span className="align-middle">{item.label}</span>
 //                 </Link>
 //               </li>
 //             );
@@ -66,77 +204,3 @@
 //     </aside>
 //   );
 // }
-
-
-
-
-
-import Link from "next/link";
-import {
-  BookOpen,
-  Users,
-  FileCheck,
-  Award,
-  Settings,
-  LayoutDashboard,
-} from "lucide-react";
-import Image from "next/image";
-
-const navItems = [
-  { icon: LayoutDashboard, label: "Dashboard", href: "/dashboard", active: false },
-  { icon: BookOpen, label: "Courses/Materials", href: "/dashboard/courses", active: true },
-  { icon: Users, label: "Classes", href: "/dashboard/classes" },
-  { icon: FileCheck, label: "Assessments", href: "/dashboard/assessments" },
-  { icon: Award, label: "My Certification", href: "/dashboard/my-certification" },
-  { icon: Settings, label: "Settings", href: "/dashboard/settings" },
-];
-
-export default function Sidebar() {
-  return (
-    <aside className="w-64 flex flex-col ">
-      {/* Logo */}
-      <div className="h-18.25 flex  px-4 border-b border-[#F0F0F0]">
-        <Image src={"/icons/Soludesks_Logo.png"} width={136} height={36}  alt={"Soludesks Logo"}   />
-            {/* <Image
-          src="/icons/Soludesks_Logo.png"
-          alt="Soludesks Logo"
-          width={136}
-          height={36}
-          className=" w-auto"
-          priority
-        /> */}
-      </div>
-
-      {/* Navigation */}
-      <nav className="flex-1 border-r border-[#F0F0F0] px-4">
-        <ul className="space-y-5 mt-8">
-          {navItems.map((item) => {
-            const Icon = item.icon;
-
-            return (
-                // <></>
-              <li key={item.label}>
-                <Link
-                  href={item.href}
-                  className={`
-                    flex items-center gap-3 px-4 py-3
-                    font-inter text-[14px] leading-5
-                    transition-colors duration-200
-                    ${
-                      item.active
-                        ? "bg-[#EAF3FF] text-[#0A60E1] border-l-2 border-[#0A60E1]"
-                        : " text-[#636363] hover:bg-gray-50"
-                    }
-                  `}
-                >
-                  <Icon className="h-5 w-5 shrink-0" />
-                  <span className="align-middle">{item.label}</span>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
-    </aside>
-  );
-}
