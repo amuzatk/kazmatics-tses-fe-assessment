@@ -3,36 +3,46 @@ import Image from "next/image";
 
 export default function Topbar() {
   return (
-    <header className="bg-[#fcfcfc] border-b border-gray-200 pt-4 pr-8] pb-3 pl-5 flex items-center justify-between h-18.25 ">
+    <header className="bg-[#fcfcfc] pt-4 pl-5  pb-2  pr-8 flex items-center justify-between  ">
       <div className="flex items-center gap-4">
-        <div className="relative w-80">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
-          <input
+        <div className="relative h-11 w-93.25 ">
+                 <input
+          type="text"
+          placeholder="Search soludesk"
+        //   className="w-full px-4 py-2 border border-[#F0F0F0] hover:border-blue-200 focus:border-blue-200 rounded-4xl"
+            className="w-full h-full pl-5 py-2.5 border border-gray-300 hover:border-blue-200 focus:outline-blue-200 rounded-4xl"
+        />
+          <Search className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+          {/* <input
             type="text"
             placeholder="Search solodesk"
             className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
+          /> */}
         </div>
       </div>
 
-      <div className="flex items-center gap-6">
-        <button className="relative">
-          <Bell className="h-6 w-6 text-gray-600" />
-          <span className="absolute -top-1 -right-1 h-4 w-4 bg-red-500 rounded-full text-[10px] text-white flex items-center justify-center">
-            3
-          </span>
-        </button>
+      <div className="flex items-center gap-5">
+        <Image src={"/icons/message-notif.png"} width={24} height={24} alt={"Notification Icon"} />
 
-        <div className="flex items-center gap-3">
-          <div className="text-right">
-            <p className="font-medium">Madison Greg</p>
-            <p className="text-sm text-gray-500">madison.reert...</p>
+        <Image src={"/icons/notif-counter.png"} width={22} height={28} alt={"Notification Counter"} />
+
+
+        <div className="flex items-center gap-2">
+             <div className="h-12 w-12 rounded-full bg-gray-200 overflow-hidden">
+            <Image src="/images/profile.jpg" alt="User" width={48} height={48} />
           </div>
-          <div className="h-10 w-10 rounded-full bg-gray-200 overflow-hidden">
-            {/* Replace with real avatar */}
-            <Image src="/avatar-placeholder.jpg" alt="User" width={40} height={40} />
-          </div>
+          <div className="text-right font-inter">
+  <h4 className="font-medium text-base leading-6 text-[#202020]">
+    Madison Greg
+  </h4>
+  <p className="font-normal text-sm leading-6 text-[#636363]">
+    madison.reert...
+  </p>
+</div>
         </div>
+
+        <Image src={"/icons/arrow-down.png"} width={24} height={24} alt={"Chevron down"} />
+
       </div>
     </header>
   );

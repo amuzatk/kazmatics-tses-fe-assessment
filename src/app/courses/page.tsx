@@ -123,11 +123,11 @@ export default function Courses() {
 
 
       {/* Search + filter */}
-      <div className="flex items-center rounded-4xl justify-between">
+      <div className="flex items-center justify-between">
         <input
           type="text"
           placeholder="Search Course"
-          className=" lg:w-[60%] px-4 py-2 border border-[#F0F0F0] hover:border-blue-200 focus:border-blue-200 rounded-4xl"
+          className=" lg:w-[60%] px-4 py-2 border border-[#F0F0F0] hover:border-blue-200  focus:outline-blue-200 rounded-4xl"
         />
         <div className="flex gap-4">
           <button className="px-4 py-2 border rounded-lg flex items-center gap-2">
@@ -177,15 +177,15 @@ function StatsCard({
   trendColor?: string;
 }) {
   return (
-    <div className="bg-white p-6 rounded-xl border shadow-sm">
-      <div className="flex items-center justify-between">
+    <div className="bg-[#F6F7F6] flex justify-between items-center border-4 border-[#FDFDFD]  p-3 rounded-lg ">
+      <div className="flex items-center  gap-3 justify-between">
+        <Icon className="h-10 w-10 text-blue-500 opacity-20" />
         <div>
           <p className="text-sm text-gray-600">{title}</p>
           <p className="text-3xl font-bold mt-1">{value}</p>
         </div>
-        <Icon className="h-10 w-10 text-blue-500 opacity-20" />
       </div>
-      {trend && <p className={`text-sm mt-2 ${trendColor}`}>{trend}</p>}
+      {trend && <p className={`text-sm mt-2 self-end ${trendColor}`}>{trend}</p>}
     </div>
   );
 }
