@@ -17,7 +17,7 @@ const mockCourses = [
     id: "2",
     title: "Mastering Interpersonal Skills",
     description: "Upon completion of this module, participants will: Implement practical communication techniques, ...",
-    category: "Soft Skill",
+    category: "Compliance & Policy",
     image: "/images/skills.jpg", // placeholder – use real URLs or local
   }, 
   {
@@ -30,20 +30,20 @@ const mockCourses = [
     id: "4",
     title: "Enhancing Team Dialogue",
     description: "Upon completion of this module, participants will: Implement practical communication techniques, ...",
-    category: "Soft Skill",
+    category: "Digital Skills",
     image: "/images/dialog.jpg", // placeholder – use real URLs or local
   }, 
   {
     id: "5",
     title: "Optimizing Group Dynamics",
     description: "Upon completion of this module, participants will: Implement practical communication techniques, ...",
-    category: "Soft Skill",
+    category: "Business & Strategy",
     image: "/images/dynamics.jpg", // placeholder – use real URLs or local
   },  {
     id: "6",
     title: "Cultivating Open Communication",
     description: "Upon completion of this module, participants will: Implement practical communication techniques, ...",
-    category: "Soft Skill",
+    category: "Onboarding",
     image: "/images/cultivate.jpg", // placeholder – use real URLs or local
   },
   {
@@ -119,15 +119,15 @@ export default function Courses() {
         />
       </div>
 
-      <div className="p-5 rounded-xl gap-8 bg-[#fcfcfc] ">
+      <div className="p-5 rounded-xl flex flex-col gap-8 bg-[#fcfcfc] ">
 
 
       {/* Search + filter */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center rounded-4xl justify-between">
         <input
           type="text"
           placeholder="Search Course"
-          className="w-96 px-4 py-2 border rounded-lg"
+          className=" lg:w-[60%] px-4 py-2 border border-[#F0F0F0] hover:border-blue-200 focus:border-blue-200 rounded-4xl"
         />
         <div className="flex gap-4">
           <button className="px-4 py-2 border rounded-lg flex items-center gap-2">
@@ -140,14 +140,14 @@ export default function Courses() {
       </div>
 
       {/* Course grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {mockCourses.map((course) => (
           <CourseCard key={course.id} course={course} />
         ))}
       </div>
 
       {/* Pagination */}
-      <div className="flex items-center justify-between pt-6 border-t">
+      <div className="flex items-center justify-between pt-6 ">
         <div className="text-sm text-gray-600">Show 10 / page</div>
         <div className="flex gap-2">
           <button className="px-4 py-2 border rounded">Prev</button>
