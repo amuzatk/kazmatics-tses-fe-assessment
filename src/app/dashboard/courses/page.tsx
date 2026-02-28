@@ -151,17 +151,14 @@ export default function Courses() {
 
       {/* Pagination */}
       <div className="flex items-center justify-between pt-6 ">
-        {/* <div className="text-sm text-gray-600">Show 10 / page</div> */}
-         {/* <button className="px-5 py-2.5 border border-[#E8E8E8] text-[#636363] text-[14px] rounded-4xl flex items-center justify-between gap-2">
-            Show 10/page 
-                    <Image src={"/icons/arrow-down.png"} width={20} height={20} alt={"Chevron down"} />
-          </button> */}
-        {/* <div className="flex gap-2">
+        <div className="text-sm text-gray-600">Show 10 / page</div>
+        <div className="flex gap-2">
           <button className="px-4 py-2 border rounded">Prev</button>
           <button className="px-4 py-2 bg-blue-600 text-white rounded">01</button>
           <button className="px-4 py-2 border rounded">02</button>
+          {/* ... more pages */}
           <button className="px-4 py-2 border rounded">Next</button>
-        </div> */}
+        </div>
       </div>
       </div>
     </div>

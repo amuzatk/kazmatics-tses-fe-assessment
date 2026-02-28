@@ -84,11 +84,11 @@ import Image from "next/image";
 
 const navItems = [
   { icon: LayoutDashboard, label: "Dashboard", href: "/dashboard", active: false },
-  { icon: BookOpen, label: "Courses/Materials", href: "/courses", active: true },
-  { icon: Users, label: "Classes", href: "/classes" },
-  { icon: FileCheck, label: "Assessments", href: "/assessments" },
-  { icon: Award, label: "My Certification", href: "/my-certification" },
-  { icon: Settings, label: "Settings", href: "/settings" },
+  { icon: BookOpen, label: "Courses/Materials", href: "/dashboard/courses", active: true },
+  { icon: Users, label: "Classes", href: "/dashboard/classes" },
+  { icon: FileCheck, label: "Assessments", href: "/dashboard/assessments" },
+  { icon: Award, label: "My Certification", href: "/dashboard/my-certification" },
+  { icon: Settings, label: "Settings", href: "/dashboard/settings" },
 ];
 
 export default function Sidebar() {
