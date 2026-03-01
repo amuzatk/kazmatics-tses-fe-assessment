@@ -242,16 +242,15 @@ export default function LessonViewerPage() {
             {!isQuizActive && currentLesson.title && (
               <div className="bg-[#f7f7f7] rounded-xl border border-[#D9D9D9] ">
                 <div className="bg-white rounded-tr-xl rounded-tl-xl ">
-                <div className="border-b h-15 flex justify-items-start items-center p-5 border-[#D9D9D9] ">
-                  <h2 className="text-[14px] text-[#202020] font-bold ">
-                    {currentLesson.title}
-                  </h2>
-                </div>
+                  <div className="border-b h-15 flex justify-items-start items-center p-5 border-[#D9D9D9] ">
+                    <h2 className="text-[14px] text-[#202020] font-bold ">
+                      {currentLesson.title}
+                    </h2>
+                  </div>
 
-                <p className="text-[14px] h-auto p-5 pb-0 text-[#636363]">
-                  {currentLesson.body}
-                </p>
-
+                  <p className="text-[14px] h-auto p-5 pb-0 text-[#636363]">
+                    {currentLesson.body}
+                  </p>
                 </div>
 
                 <div className="flex justify-end mt-15 mr-5 mb-10 ">
