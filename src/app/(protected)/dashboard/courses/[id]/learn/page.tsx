@@ -1,55 +1,79 @@
 // app/dashboard/courses/[id]/learn/page.tsx
-'use client';
+"use client";
 
-import { useParams, useRouter } from 'next/navigation';
-import { ArrowLeft } from 'lucide-react';
-import Image from 'next/image';
-import { useState } from 'react';
-import { Collapse } from 'antd';
-import type { CollapseProps } from 'antd';
+import { useParams, useRouter } from "next/navigation";
+import { ArrowLeft } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
+import { Collapse } from "antd";
+import type { CollapseProps } from "antd";
 
-import { mockCourses } from '@/src/utils/constants';
-import QuizForm from '@/src/components/ui/QuizForm';
+import { mockCourses } from "@/src/utils/constants";
+import QuizForm from "@/src/components/ui/QuizForm";
 
 // Lesson content per module (expand as needed)
 const modules = [
   {
-    key: 'introduction',
-    title: 'Introduction',
+    key: "introduction",
+    title: "Introduction",
     lessons: [
-      { key: 'welcome', title: 'Welcome Message', body: '...' /* paste full welcome text here */ },
-      { key: 'note-style', title: 'A Note on Style', body: '...' },
-      { key: 'what-learn', title: "What You'll Learn", body: '...' },
-      { key: 'instructor', title: 'Meet Your Instructor', body: '...' },
+      {
+        key: "welcome",
+        title: "Welcome Message",
+        body: "..." /* paste full welcome text here */,
+      },
+      { key: "note-style", title: "A Note on Style", body: "..." },
+      { key: "what-learn", title: "What You'll Learn", body: "..." },
+      { key: "instructor", title: "Meet Your Instructor", body: "..." },
     ],
   },
   {
-    key: 'setup',
-    title: 'Setting Up Your Workspace',
+    key: "setup",
+    title: "Setting Up Your Workspace",
     lessons: [
-      { key: 'setup-1', title: 'Lesson 1 - Workspace Basics', body: 'Step-by-step setup guide...' },
-      { key: 'setup-2', title: 'Lesson 2 - Tools & Notifications', body: 'Configuring alerts and preferences...' },
+      {
+        key: "setup-1",
+        title: "Lesson 1 - Workspace Basics",
+        body: "Step-by-step setup guide...",
+      },
+      {
+        key: "setup-2",
+        title: "Lesson 2 - Tools & Notifications",
+        body: "Configuring alerts and preferences...",
+      },
     ],
   },
   {
-    key: 'navigate',
-    title: 'Navigating the Course',
+    key: "navigate",
+    title: "Navigating the Course",
     lessons: [
-      { key: 'navigate-1', title: 'Lesson 1 - Platform Overview', body: '...' },
-      { key: 'navigate-2', title: 'Lesson 2 - Progress Tracking', body: 'How to track your learning progress...' },
+      { key: "navigate-1", title: "Lesson 1 - Platform Overview", body: "..." },
+      {
+        key: "navigate-2",
+        title: "Lesson 2 - Progress Tracking",
+        body: "How to track your learning progress...",
+      },
     ],
   },
   {
-    key: 'resources',
-    title: 'Course Resources',
+    key: "resources",
+    title: "Course Resources",
     lessons: [
-      { key: 'resources-1', title: 'Lesson 1 - Downloads & PDFs', body: 'Accessing downloadable materials...' },
-      { key: 'resources-2', title: 'Lesson 2 - External Links', body: 'Recommended external resources...' },
+      {
+        key: "resources-1",
+        title: "Lesson 1 - Downloads & PDFs",
+        body: "Accessing downloadable materials...",
+      },
+      {
+        key: "resources-2",
+        title: "Lesson 2 - External Links",
+        body: "Recommended external resources...",
+      },
     ],
   },
   {
-    key: 'assessment',
-    title: 'Assessment',
+    key: "assessment",
+    title: "Assessment",
     isQuiz: true,
     lessons: [],
   },
@@ -60,11 +84,14 @@ export default function LessonViewerPage() {
   const router = useRouter();
 
   const course = mockCourses.find((c) => c.id === id);
-  if (!course) return <div className="p-10 text-center text-xl">Course not found</div>;
+  if (!course)
+    return <div className="p-10 text-center text-xl">Course not found</div>;
 
-  const [completedLessons, setCompletedLessons] = useState<Set<string>>(new Set());
-  const [activeModule, setActiveModule] = useState<string>('introduction');
-  const [activeLesson, setActiveLesson] = useState<string>('welcome');
+  const [completedLessons, setCompletedLessons] = useState<Set<string>>(
+    new Set(),
+  );
+  const [activeModule, setActiveModule] = useState<string>("introduction");
+  const [activeLesson, setActiveLesson] = useState<string>("welcome");
 
   // Mark lesson complete + auto-advance
   const markComplete = (lessonKey: string) => {
@@ -73,7 +100,9 @@ export default function LessonViewerPage() {
     const currentModuleObj = modules.find((m) => m.key === activeModule);
     if (!currentModuleObj || currentModuleObj.isQuiz) return;
 
-    const lessonIndex = currentModuleObj.lessons.findIndex((l) => l.key === lessonKey);
+    const lessonIndex = currentModuleObj.lessons.findIndex(
+      (l) => l.key === lessonKey,
+    );
     if (lessonIndex < 0) return;
 
     // Next lesson in current module
@@ -99,23 +128,24 @@ export default function LessonViewerPage() {
     .flatMap((m) => m.lessons)
     .find((l) => l.key === activeLesson);
 
-  const currentLesson = currentLessonObj || { title: '', body: '' };
+  const currentLesson = currentLessonObj || { title: "", body: "" };
 
   // Collapse items
-  const collapseItems: CollapseProps['items'] = modules.map((module) => ({
+  const collapseItems: CollapseProps["items"] = modules.map((module) => ({
     key: module.key,
     label: (
       <div className="flex justify-between items-center w-full pr-4 font-medium text-gray-800">
         <span>{module.title}</span>
         {module.isQuiz ? null : (
           <span className="text-sm text-gray-500">
-            ({module.lessons.filter((l) => isLessonComplete(l.key)).length}/{module.lessons.length})
+            ({module.lessons.filter((l) => isLessonComplete(l.key)).length}/
+            {module.lessons.length})
           </span>
         )}
       </div>
     ),
     children: module.isQuiz ? (
-      <QuizForm onComplete={() => markComplete('assessment')} />
+      <QuizForm onComplete={() => markComplete("assessment")} />
     ) : (
       <div className="space-y-1 py-3">
         {module.lessons.map((lesson) => (
@@ -126,21 +156,25 @@ export default function LessonViewerPage() {
               setActiveModule(module.key);
             }}
             className={`flex items-center gap-4 px-5 py-3.5 cursor-pointer transition-all rounded-lg ${
-              activeLesson === lesson.key ? 'bg-[#E1F5FE] text-[#035177]' : 'hover:bg-gray-50'
+              activeLesson === lesson.key
+                ? "bg-[#E1F5FE] text-[#035177]"
+                : "hover:bg-gray-50"
             }`}
           >
             <div
               className={`w-7 h-7 rounded-full border-2 flex items-center justify-center text-lg shrink-0 transition-all ${
                 isLessonComplete(lesson.key)
-                  ? 'bg-[#00B000] border-[#00B000] text-white shadow-sm'
-                  : 'border-gray-300 text-transparent'
+                  ? "bg-[#00B000] border-[#00B000] text-white shadow-sm"
+                  : "border-gray-300 text-transparent"
               }`}
             >
-              {isLessonComplete(lesson.key) ? '✓' : '○'}
+              {isLessonComplete(lesson.key) ? "✓" : "○"}
             </div>
             <span
               className={`text-[15px] leading-5 ${
-                isLessonComplete(lesson.key) ? 'text-gray-500 line-through' : 'text-gray-900'
+                isLessonComplete(lesson.key)
+                  ? "text-gray-500 line-through"
+                  : "text-gray-900"
               }`}
             >
               {lesson.title}
@@ -149,33 +183,41 @@ export default function LessonViewerPage() {
         ))}
       </div>
     ),
-    extra: module.isQuiz
-      ? isLessonComplete('assessment') ? <span className="text-[#00B000] text-xl font-bold">✓</span> : null
-      : module.lessons.every((l) => isLessonComplete(l.key)) ? (
-          <span className="text-[#00B000] text-xl font-bold">✓</span>
-        ) : null,
+    extra: module.isQuiz ? (
+      isLessonComplete("assessment") ? (
+        <span className="text-[#00B000] text-xl font-bold">✓</span>
+      ) : null
+    ) : module.lessons.every((l) => isLessonComplete(l.key)) ? (
+      <span className="text-[#00B000] text-xl font-bold">✓</span>
+    ) : null,
   }));
 
   return (
     <div className="min-h-screen bg-gray-50 pb-16">
       {/* Header – kept exactly as you have */}
-               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                <button
-                  onClick={() => router.back()}
-                  className=" rounded-full cursor-pointer hover:bg-gray-100 transition"
-                >
-                  <Image src={"/icons/circle-back.png"} alt={"back-arrow"} width={44} height={44} className="object-cover" />
-                </button>
-      
-                  <h1 className="font-medium text-2xl text-[#202020]">
-                    {course.title}
-                  </h1>
-                     <p className="bg-[#E1F5FE] px-5 py-2 rounded-[100px] text-[#035177] border-none">
-                    {course.category}
-                  </p>
-              </div>
-            </div>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <button
+            onClick={() => router.back()}
+            className=" rounded-full cursor-pointer hover:bg-gray-100 transition"
+          >
+            <Image
+              src={"/icons/circle-back.png"}
+              alt={"back-arrow"}
+              width={44}
+              height={44}
+              className="object-cover"
+            />
+          </button>
+
+          <h1 className="font-medium text-2xl text-[#202020]">
+            {course.title}
+          </h1>
+          <p className="bg-[#E1F5FE] px-5 py-2 rounded-[100px] text-[#035177] border-none">
+            {course.category}
+          </p>
+        </div>
+      </div>
 
       {/* Main layout */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
@@ -208,12 +250,18 @@ export default function LessonViewerPage() {
             </div>
 
             {/* Lesson content – only show when not in quiz */}
-            {!activeModule.includes('assessment') && currentLesson.title && (
+            {!activeModule.includes("assessment") && currentLesson.title && (
               <div className="bg-white rounded-xl shadow-sm p-6 md:p-8">
-                <h2 className="text-2xl font-semibold mb-6">{currentLesson.title}</h2>
+                <h2 className="text-2xl font-semibold mb-6">
+                  {currentLesson.title}
+                </h2>
 
                 <div className="prose prose-gray max-w-none space-y-6 text-gray-700 leading-relaxed">
-                  <div dangerouslySetInnerHTML={{ __html: currentLesson.body.replace(/\n/g, '<br/>') }} />
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: currentLesson.body.replace(/\n/g, "<br/>"),
+                    }}
+                  />
                 </div>
 
                 <div className="mt-10 flex justify-end">
@@ -222,20 +270,24 @@ export default function LessonViewerPage() {
                     disabled={isLessonComplete(activeLesson)}
                     className={`
                       px-8 py-3.5 rounded-full font-medium text-white transition
-                      ${isLessonComplete(activeLesson)
-                        ? 'bg-[#00B000] cursor-not-allowed'
-                        : 'bg-[#0A60E1] hover:bg-blue-700'}
+                      ${
+                        isLessonComplete(activeLesson)
+                          ? "bg-[#00B000] cursor-not-allowed"
+                          : "bg-[#0A60E1] hover:bg-blue-700"
+                      }
                     `}
                   >
-                    {isLessonComplete(activeLesson) ? 'Completed ✓' : 'Mark as complete'}
+                    {isLessonComplete(activeLesson)
+                      ? "Completed ✓"
+                      : "Mark as complete"}
                   </button>
                 </div>
               </div>
             )}
 
             {/* Quiz – shown when Assessment module is active */}
-            {activeModule.includes('assessment') && (
-              <QuizForm onComplete={() => markComplete('assessment')} />
+            {activeModule.includes("assessment") && (
+              <QuizForm onComplete={() => markComplete("assessment")} />
             )}
           </div>
 
@@ -247,12 +299,16 @@ export default function LessonViewerPage() {
                 activeKey={activeModule}
                 onChange={(key) => {
                   if (Array.isArray(key)) {
-                    const newKey = key[0] || 'introduction';
+                    const newKey = key[0] || "introduction";
                     setActiveModule(newKey);
                     const mod = modules.find((m) => m.key === newKey);
                     if (mod && !mod.isQuiz && mod.lessons.length > 0) {
-                      const firstIncomplete = mod.lessons.find((l) => !isLessonComplete(l.key));
-                      setActiveLesson(firstIncomplete?.key || mod.lessons[0].key);
+                      const firstIncomplete = mod.lessons.find(
+                        (l) => !isLessonComplete(l.key),
+                      );
+                      setActiveLesson(
+                        firstIncomplete?.key || mod.lessons[0].key,
+                      );
                     }
                   }
                 }}
@@ -266,9 +322,6 @@ export default function LessonViewerPage() {
     </div>
   );
 }
-
-
-
 
 // // app/dashboard/courses/[id]/learn/page.tsx
 // 'use client';
@@ -454,7 +507,7 @@ export default function LessonViewerPage() {
 //                 >
 //                   <Image src={"/icons/circle-back.png"} alt={"back-arrow"} width={44} height={44} className="object-cover" />
 //                 </button>
-      
+
 //                   <h1 className="font-medium text-2xl text-[#202020]">
 //                     {course.title}
 //                   </h1>
@@ -540,9 +593,6 @@ export default function LessonViewerPage() {
 //     </div>
 //   );
 // }
-
-
-
 
 // // app/dashboard/courses/[id]/learn/page.tsx
 // 'use client';
@@ -708,7 +758,7 @@ export default function LessonViewerPage() {
 //                 >
 //                   <Image src={"/icons/circle-back.png"} alt={"back-arrow"} width={44} height={44} className="object-cover" />
 //                 </button>
-      
+
 //                   <h1 className="font-medium text-2xl text-[#202020]">
 //                     {course.title}
 //                   </h1>

@@ -21,14 +21,15 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         {/* <Providers> */}
-          <div className="flex h-screen  bg-[#fcfcfc]  ">
-            <Sidebar />
-            <div className="flex-1 flex flex-col overflow-hidden bg-[#f7f7f7]  ">
-              <Topbar />
-              <main className="flex-1 overflow-y-auto pl-5 pr-5 pt-5 bg-[#f7f7f7] ">
-                {children}</main>
-            </div>
+        <div className="flex h-screen  bg-[#fcfcfc]  ">
+          <Sidebar />
+          <div className="flex-1 flex flex-col overflow-hidden bg-[#f7f7f7]  ">
+            <Topbar />
+            <main className="flex-1 overflow-y-auto pl-5 pr-5 pt-5 bg-[#f7f7f7] ">
+              {children}
+            </main>
           </div>
+        </div>
         {/* </Providers> */}
       </body>
     </html>

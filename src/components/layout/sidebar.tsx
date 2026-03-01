@@ -1,47 +1,26 @@
 // src/components/layout/Sidebar.tsx
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { Menu, Drawer } from 'antd';
-import { MenuOutlined } from '@ant-design/icons';
-import { useState } from 'react';
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Menu, Drawer } from "antd";
+import { MenuOutlined } from "@ant-design/icons";
+import { useState } from "react";
 import Image from "next/image";
-
-import {
-  DashboardIcon,
-  CoursesIcon,
-  ClassesIcon,
-  AssessmentsIcon,
-  CertificationIcon,
-  SettingsIcon,
-} from '@/src/svg';
-
-const navItems = [
-  { key: '/dashboard', label: 'Dashboard', Icon: DashboardIcon, exact: true },
-  { key: '/dashboard/courses', label: 'Courses/Materials', Icon: CoursesIcon },
-  { key: '/dashboard/classes', label: 'Classes', Icon: ClassesIcon },
-  { key: '/dashboard/assessments', label: 'Assessments', Icon: AssessmentsIcon },
-  { key: '/dashboard/my-certification', label: 'My Certification', Icon: CertificationIcon },
-  { key: '/dashboard/settings', label: 'Settings', Icon: SettingsIcon },
-];
+import { navItems } from "@/src/utils/constants";
 
 export default function Sidebar() {
   const pathname = usePathname();
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const menuItems = navItems.map((item) => {
-    const isActive = item.exact 
-      ? pathname === item.key 
+    const isActive = item.exact
+      ? pathname === item.key
       : pathname.startsWith(item.key);
 
     return {
       key: item.key,
-      icon: (
-        <item.Icon 
-          stroke={isActive ? "#0A60E1" : "#636363"} 
-        />
-      ),
+      icon: <item.Icon stroke={isActive ? "#0A60E1" : "#636363"} />,
       label: (
         <Link href={item.key} onClick={() => setDrawerOpen(false)}>
           {item.label}
@@ -54,15 +33,20 @@ export default function Sidebar() {
     <>
       {/* Desktop Sidebar */}
       <aside className="hidden lg:flex lg:w-64 lg:flex-col">
-                <div className="h-18.25 flex items-center px-4 border-b border-[#F0F0F0]">
-          <Image src="/icons/Soludesks_Logo.png" width={136} height={36} alt="Soludesks Logo" />
+        <div className="h-18.25 flex items-center px-4 border-b border-[#F0F0F0]">
+          <Image
+            src="/icons/Soludesks_Logo.png"
+            width={136}
+            height={36}
+            alt="Soludesks Logo"
+          />
         </div>
 
         <nav className="flex-1 border-r border-[#F0F0F0] px-4">
           <ul className="space-y-2 mt-7">
             {navItems.map((item) => {
-              const isActive = item.exact 
-                ? pathname === item.key 
+              const isActive = item.exact
+                ? pathname === item.key
                 : pathname.startsWith(item.key);
 
               return (
@@ -73,9 +57,10 @@ export default function Sidebar() {
                       flex items-center gap-3 px-4 py-3 
                       font-inter text-[14px] leading-5
                       transition-colors
-                      ${isActive
-                        ? 'bg-[#EAF3FF] text-[#0A60E1] border-l-2 border-[#0A60E1]'
-                        : 'text-[#636363] hover:bg-gray-50'
+                      ${
+                        isActive
+                          ? "bg-[#EAF3FF] text-[#0A60E1] border-l-2 border-[#0A60E1]"
+                          : "text-[#636363] hover:bg-gray-50"
                       }
                     `}
                   >
@@ -112,8 +97,13 @@ export default function Sidebar() {
         closable={false}
         styles={{ body: { padding: 0 } }}
       >
-                <div className="h-18.25 flex items-center px-4 border-b border-[#F0F0F0]">
-          <Image src="/icons/Soludesks_Logo.png" width={136} height={36} alt="Soludesks Logo" />
+        <div className="h-18.25 flex items-center px-4 border-b border-[#F0F0F0]">
+          <Image
+            src="/icons/Soludesks_Logo.png"
+            width={136}
+            height={36}
+            alt="Soludesks Logo"
+          />
         </div>
 
         <Menu
@@ -126,10 +116,6 @@ export default function Sidebar() {
     </>
   );
 }
-
-
-
-
 
 // // src/components/layout/Sidebar.tsx
 // 'use client';
@@ -175,7 +161,7 @@ export default function Sidebar() {
 //   return (
 //     <>
 //       {/* Desktop Sidebar – restored original look + dynamic active */}
-//       <aside 
+//       <aside
 //     //   className="hidden lg:flex lg:w-64 lg:flex-col lg:bg-white h-screen border-r border-[#F0F0F0]"
 //     className="hidden lg:flex lg:w-64 lg:flex-col "
 //       >
@@ -184,10 +170,10 @@ export default function Sidebar() {
 //         </div>
 
 //               {/* Navigation */}
-//         <nav 
+//         <nav
 //         className="flex-1 border-r border-[#F0F0F0] px-4"
 //         >
-//           <ul 
+//           <ul
 //         className="space-y-2 mt-7"
 //           >
 //             {navItems.map((item) => (
@@ -195,7 +181,7 @@ export default function Sidebar() {
 //                 <Link
 //                   href={item.key}
 //                   className={`
-//                     flex items-center gap-3 px-4 py-3 
+//                     flex items-center gap-3 px-4 py-3
 //                     font-inter text-[14px] leading-5
 //                     transition-colors
 //                     ${
@@ -253,12 +239,6 @@ export default function Sidebar() {
 //   );
 // }
 
-
-
-
-
-
-
 // //src/components/layout/sidebar.tsx PREVIOUS VERSION
 // import Link from "next/link";
 // import {
@@ -290,7 +270,7 @@ export default function Sidebar() {
 
 //       {/* Navigation */}
 //       <nav className="flex-1 border-r border-[#F0F0F0] px-4">
-//         <ul 
+//         <ul
 //         // className="space-y-5 mt-8"
 //         className="space-y-2 mt-7"
 //         >

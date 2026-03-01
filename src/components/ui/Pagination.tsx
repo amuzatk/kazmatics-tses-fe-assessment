@@ -1,8 +1,7 @@
-// src/components/ui/Pagination.tsx
-'use client';
+"use client";
 
-import { Dispatch, SetStateAction } from 'react';
-import Image from 'next/image';
+import { Dispatch, SetStateAction } from "react";
+import Image from "next/image";
 
 interface PaginationProps {
   currentPage: number;
@@ -30,7 +29,7 @@ export default function Pagination({
 
     pages.push(1);
 
-    if (currentPage > 3) pages.push('...');
+    if (currentPage > 3) pages.push("...");
 
     const start = Math.max(2, currentPage - 1);
     const end = Math.min(totalPages - 1, currentPage + 1);
@@ -38,7 +37,7 @@ export default function Pagination({
       pages.push(i);
     }
 
-    if (currentPage < totalPages - 2) pages.push('...');
+    if (currentPage < totalPages - 2) pages.push("...");
 
     if (totalPages > 1) pages.push(totalPages);
 
@@ -52,7 +51,12 @@ export default function Pagination({
       {showItemsPerPage && (
         <button className="px-5 py-2.5 border border-[#E8E8E8] text-[#636363] text-[14px] rounded-full flex items-center justify-center gap-2 w-full sm:w-auto hover:bg-gray-50">
           Show 10/page
-          <Image src="/icons/arrow-down.png" width={20} height={20} alt="down" />
+          <Image
+            src="/icons/arrow-down.png"
+            width={20}
+            height={20}
+            alt="down"
+          />
         </button>
       )}
 
@@ -62,9 +66,11 @@ export default function Pagination({
           onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
           className={`
             text-[16px] transition-colors
-            ${currentPage === 1
-              ? 'text-[#8C8C8C] cursor-default'
-              : 'text-[#0A60E1] cursor-pointer hover:underline'}
+            ${
+              currentPage === 1
+                ? "text-[#8C8C8C] cursor-default"
+                : "text-[#0A60E1] cursor-pointer hover:underline"
+            }
           `}
         >
           Prev
@@ -72,11 +78,14 @@ export default function Pagination({
 
         <div className="flex gap-2">
           {pageNumbers.map((page, idx) => {
-            if (page === '...') {
+            if (page === "...") {
               return (
-                <span key={`ellipsis-${idx}`} className="flex items-center text-[#0A60E1]">
+                <div
+                  key={`ellipsis-${idx}`}
+                  className="w-8 h-8 flex items-center justify-center text-[14px] rounded-full bg-[#fdfdfd] border border-[#0A60E1] text-[#0A60E1]"
+                >
                   ...
-                </span>
+                </div>
               );
             }
 
@@ -88,11 +97,11 @@ export default function Pagination({
                 onClick={() => setCurrentPage(Number(page))}
                 className={`w-8 h-8 flex items-center justify-center text-[14px] rounded-full transition-colors ${
                   isActive
-                    ? 'bg-[#0A60E1] text-white'
-                    : 'bg-[#fdfdfd] border border-[#0A60E1] text-[#0A60E1] hover:bg-gray-50'
+                    ? "bg-[#0A60E1] text-white"
+                    : "bg-[#fdfdfd] border border-[#0A60E1] text-[#0A60E1] hover:bg-gray-50"
                 }`}
               >
-                {(page as number).toString().padStart(2, '0')}
+                {(page as number).toString().padStart(2, "0")}
               </button>
             );
           })}
@@ -103,9 +112,11 @@ export default function Pagination({
           onClick={() => setCurrentPage((p) => p + 1)}
           className={`
             text-[16px] transition-colors
-            ${currentPage === totalPages
-              ? 'text-[#8C8C8C] cursor-default'
-              : 'text-[#0A60E1] cursor-pointer hover:underline'}
+            ${
+              currentPage === totalPages
+                ? "text-[#8C8C8C] cursor-default"
+                : "text-[#0A60E1] cursor-pointer hover:underline"
+            }
           `}
         >
           Next

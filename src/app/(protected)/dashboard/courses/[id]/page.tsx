@@ -1,48 +1,14 @@
 // app/dashboard/courses/[id]/page.tsx
-'use client';
+"use client";
 
-import { useParams, useRouter } from 'next/navigation';
-import Image from 'next/image';
-import { Table, Tag } from 'antd';
-import type { ColumnsType } from 'antd/es/table';
-import StatsCard from '@/src/components/ui/StatCard';
-import Pagination from '@/src/components/ui/Pagination';
-import { mockCourses } from '@/src/utils/constants';
-import { useState } from 'react';
-
-// Mock learners data (you can move to separate file or RTK Query later)
-const mockLearners = [
-  { id: 1, name: 'Nithya Menon', avatar: '/avatars/Nithya.png', city: 'New York', email: 'nithya.menon@email.com' },
-  { id: 2, name: 'Meera Gonzalez', avatar: '/avatars/Nithya.png', city: 'Toronto', email: 'meera.gonzalez@email.com' },
-  { id: 3, name: 'Monica Patel', avatar: '/avatars/Nithya.png', city: 'Paris', email: 'monica.patel@email.com' },
-  { id: 4, name: 'Dinesh Kumar', avatar: '/avatars/Nithya.png', city: 'Tokyo', email: 'dinesh.kumar@email.com' },
-  { id: 5, name: 'Karthik Subramanian', avatar: '/avatars/Nithya.png', city: 'London', email: 'karthik.subramanian@email.com' },
-  { id: 6, name: 'Jagathesh Narayanan', avatar: '/avatars/Nithya.png', city: 'Berlin', email: 'jagathesh.narayanan@email.com' },
-{ id: 7, name: 'Nithya Menon', avatar: '/avatars/Nithya.png', city: 'New York', email: 'nithya.menon@email.com' },
-  { id: 8, name: 'Meera Gonzalez', avatar: '/avatars/Nithya.png', city: 'Toronto', email: 'meera.gonzalez@email.com' },
-  { id:9, name: 'Monica Patel', avatar: '/avatars/Nithya.png', city: 'Paris', email: 'monica.patel@email.com' },
-  { id: 10, name: 'Dinesh Kumar', avatar: '/avatars/Nithya.png', city: 'Tokyo', email: 'dinesh.kumar@email.com' },
-  { id: 11, name: 'Karthik Subramanian', avatar: '/avatars/Nithya.png', city: 'London', email: 'karthik.subramanian@email.com' },
-  { id: 12, name: 'Jagathesh Narayanan', avatar: '/avatars/Nithya.png', city: 'Berlin', email: 'jagathesh.narayanan@email.com' },
-{ id: 13, name: 'Nithya Menon', avatar: '/avatars/Nithya.png', city: 'New York', email: 'nithya.menon@email.com' },
-  { id: 14, name: 'Meera Gonzalez', avatar: '/avatars/Nithya.png', city: 'Toronto', email: 'meera.gonzalez@email.com' },
-  { id: 15, name: 'Monica Patel', avatar: '/avatars/Nithya.png', city: 'Paris', email: 'monica.patel@email.com' },
-  { id: 16, name: 'Dinesh Kumar', avatar: '/avatars/Nithya.png', city: 'Tokyo', email: 'dinesh.kumar@email.com' },
-  { id: 17, name: 'Karthik Subramanian', avatar: '/avatars/Nithya.png', city: 'London', email: 'karthik.subramanian@email.com' },
-  { id: 18, name: 'Jagathesh Narayanan', avatar: '/avatars/Nithya.png', city: 'Berlin', email: 'jagathesh.narayanan@email.com' },
-{ id: 19, name: 'Nithya Menon', avatar: '/avatars/Nithya.png', city: 'New York', email: 'nithya.menon@email.com' },
-  { id: 20, name: 'Meera Gonzalez', avatar: '/avatars/Nithya.png', city: 'Toronto', email: 'meera.gonzalez@email.com' },
-  { id: 21, name: 'Monica Patel', avatar: '/avatars/Nithya.png', city: 'Paris', email: 'monica.patel@email.com' },
-  { id: 22, name: 'Dinesh Kumar', avatar: '/avatars/Nithya.png', city: 'Tokyo', email: 'dinesh.kumar@email.com' },
-  { id: 23, name: 'Karthik Subramanian', avatar: '/avatars/Nithya.png', city: 'London', email: 'karthik.subramanian@email.com' },
-  { id: 24, name: 'Jagathesh Narayanan', avatar: '/avatars/Nithya.png', city: 'Berlin', email: 'jagathesh.narayanan@email.com' },
-{ id: 25, name: 'Nithya Menon', avatar: '/avatars/Nithya.png', city: 'New York', email: 'nithya.menon@email.com' },
-  { id: 26, name: 'Meera Gonzalez', avatar: '/avatars/Nithya.png', city: 'Toronto', email: 'meera.gonzalez@email.com' },
-  { id: 27, name: 'Monica Patel', avatar: '/avatars/Nithya.png', city: 'Paris', email: 'monica.patel@email.com' },
-  { id: 28, name: 'Dinesh Kumar', avatar: '/avatars/Nithya.png', city: 'Tokyo', email: 'dinesh.kumar@email.com' },
-  { id: 29, name: 'Karthik Subramanian', avatar: '/avatars/Nithya.png', city: 'London', email: 'karthik.subramanian@email.com' },
-  { id: 30, name: 'Jagathesh Narayanan', avatar: '/avatars/Nithya.png', city: 'Berlin', email: 'jagathesh.narayanan@email.com' },
-];
+import { useParams, useRouter } from "next/navigation";
+import Image from "next/image";
+import { Table, Tag } from "antd";
+import type { ColumnsType } from "antd/es/table";
+import StatsCard from "@/src/components/ui/StatCard";
+import Pagination from "@/src/components/ui/Pagination";
+import { mockCourses, mockLearners } from "@/src/utils/constants";
+import { useState } from "react";
 
 const ITEMS_PER_PAGE = 10;
 
@@ -65,68 +31,70 @@ export default function CourseDetailPage() {
   // Stats data for this page
   const statsData = [
     {
-      icon: '/icons/applicants.png',
-      title: 'Total Applicants',
-      value: '1223',
-      trendColor: 'text-[#00B000]',
+      icon: "/icons/applicants.png",
+      title: "Total Applicants",
+      value: "1223",
+      trendColor: "text-[#00B000]",
     },
     {
-      icon: '/icons/Learners.png',
-      title: 'Active Learners',
-      value: '13',
+      icon: "/icons/Learners.png",
+      title: "Active Learners",
+      value: "13",
     },
   ];
 
   // Ant Design Table columns
-  const columns: ColumnsType<typeof mockLearners[0]> = [
+  const columns: ColumnsType<(typeof mockLearners)[0]> = [
     {
-      title: 'Name',
-      dataIndex: 'name',
-      key: 'name',
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
       render: (text, record) => (
         <div className="flex items-center gap-3">
           <div className="h-10 w-10 rounded-full overflow-hidden">
-            <Image 
-           src={record.avatar || "/avatars/Nithya.png"}
-
-             alt={text} width={40} height={40} className="object-cover" />
+            <Image
+              src={record.avatar || "/avatars/Nithya.png"}
+              alt={text}
+              width={40}
+              height={40}
+              className="object-cover"
+            />
           </div>
           <span className="font-medium text-[#202020]">{text}</span>
         </div>
       ),
     },
     {
-      title: 'City',
-      dataIndex: 'city',
-      key: 'city',
+      title: "City",
+      dataIndex: "city",
+      key: "city",
       render: (text) => <span className="text-[#636363]">{text}</span>,
     },
     {
-      title: 'Email Address',
-      dataIndex: 'email',
-      key: 'email',
+      title: "Email Address",
+      dataIndex: "email",
+      key: "email",
       render: (text) => <span className="text-[#636363]">{text}</span>,
     },
     {
-    title: 'Actions',
-    key: 'actions',
-    width: 80,
-    render: () => (
-      <button
-        onClick={() => router.push(`/dashboard/courses/${id}/learn`)}
-        className="text-[#0A60E1] hover:text-blue-700 transition-colors p-1 rounded hover:bg-blue-50"
-      >
-        <Image
-          src="/icons/message-text.png"
-          alt="View lessons"
-          width={24}
-          height={24}
-          className="object-cover"
-        />
-      </button>
-    ),
-  },
-
+      title: "Actions",
+      key: "actions",
+      width: 80,
+      render: () => (
+        <button
+          onClick={() => router.push(`/dashboard/courses/${id}/learn`)}
+          className="text-[#0A60E1] hover:text-blue-700 transition-colors p-1 rounded hover:bg-blue-50"
+        >
+          <Image
+            src="/icons/message-text.png"
+            alt="View lessons"
+            width={24}
+            height={24}
+            className="object-cover"
+          />
+        </button>
+      ),
+    },
   ];
 
   return (
@@ -138,18 +106,24 @@ export default function CourseDetailPage() {
             onClick={() => router.back()}
             className=" rounded-full cursor-pointer hover:bg-gray-100 transition"
           >
-            <Image src={"/icons/circle-back.png"} alt={"back-arrow"} width={44} height={44} className="object-cover" />
+            <Image
+              src={"/icons/circle-back.png"}
+              alt={"back-arrow"}
+              width={44}
+              height={44}
+              className="object-cover"
+            />
           </button>
 
-            <h1 className="font-medium text-2xl text-[#202020]">
-              {course.title}
-            </h1>
-            {/* <Tag color="#EAF3FF" className="mt-1 px-3 py-1 text-[#0A60E1] border-none">
+          <h1 className="font-medium text-2xl text-[#202020]">
+            {course.title}
+          </h1>
+          {/* <Tag color="#EAF3FF" className="mt-1 px-3 py-1 text-[#0A60E1] border-none">
               {course.category}
             </Tag> */}
-                                   <p className="bg-[#E1F5FE] px-5 py-2 rounded-[100px] text-[#035177] border-none">
-              {course.category}
-            </p>
+          <p className="bg-[#E1F5FE] px-5 py-2 rounded-[100px] text-[#035177] border-none">
+            {course.category}
+          </p>
         </div>
 
         <button className="bg-[#0A60E1] text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition">
@@ -160,7 +134,7 @@ export default function CourseDetailPage() {
       {/* Hero banner */}
       <div className="relative h-64 md:h-80 rounded-xl overflow-hidden">
         <Image
-           src={course.image || "/images/communication.png"}
+          src={course.image || "/images/communication.png"}
           alt="Course banner"
           fill
           className="object-cover"
@@ -182,7 +156,7 @@ export default function CourseDetailPage() {
           rowKey="id"
           pagination={false}
           className="border-none"
-          scroll={{ x: 'max-content' }}
+          scroll={{ x: "max-content" }}
         />
 
         {/* Pagination */}

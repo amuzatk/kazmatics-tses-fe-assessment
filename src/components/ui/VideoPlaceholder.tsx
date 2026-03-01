@@ -1,4 +1,3 @@
-// src/components/ui/VideoPlaceholder.tsx
 export default function VideoPlaceholder() {
   return (
     <div className="relative aspect-video bg-gray-900 rounded-xl overflow-hidden flex items-center justify-center">
