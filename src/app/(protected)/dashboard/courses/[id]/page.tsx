@@ -176,10 +176,6 @@ export default function CourseDetailPage() {
 
       {/* Learners Table */}
       <div className="bg-white rounded-xl border border-[#F0F0F0] overflow-hidden">
-        <div className="p-5 border-b border-[#F0F0F0]">
-          <h3 className="font-medium text-lg text-[#202020]">Learners</h3>
-        </div>
-
         <Table
           columns={columns}
           dataSource={paginatedLearners}
