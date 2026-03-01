@@ -111,11 +111,7 @@ export default function CourseDetailPage() {
       width: 80,
       render: () => (
         <button className="text-[#0A60E1] hover:text-blue-700">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 10.8333C10.4602 10.8333 10.8333 10.4602 10.8333 10C10.8333 9.53977 10.4602 9.16667 10 9.16667C9.53977 9.16667 9.16667 9.53977 9.16667 10C9.16667 10.4602 9.53977 10.8333 10 10.8333Z" fill="#0A60E1"/>
-            <path d="M10 5.83333C10.4602 5.83333 10.8333 5.46023 10.8333 5C10.8333 4.53977 10.4602 4.16667 10 4.16667C9.53977 4.16667 9.16667 4.53977 9.16667 5C9.16667 5.46023 9.53977 5.83333 10 5.83333Z" fill="#0A60E1"/>
-            <path d="M10 15.8333C10.4602 15.8333 10.8333 15.4602 10.8333 15C10.8333 14.5398 10.4602 14.1667 10 14.1667C9.53977 14.1667 9.16667 14.5398 9.16667 15C9.16667 15.4602 9.53977 15.8333 10 15.8333Z" fill="#0A60E1"/>
-          </svg>
+            <Image src={"/icons/message-text.png"} alt={"message-text"} width={24} height={24} className="object-cover" />
         </button>
       ),
     },
@@ -125,25 +121,23 @@ export default function CourseDetailPage() {
     <div className="space-y-6 pb-10">
       {/* Header with back arrow, title, category, button */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div className="flex items-center gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <button
             onClick={() => router.back()}
-            className="p-2 rounded-full hover:bg-gray-100 transition"
+            className=" rounded-full cursor-pointer hover:bg-gray-100 transition"
           >
-            <ArrowLeft className="h-6 w-6 text-[#636363]" />
+            <Image src={"/icons/circle-back.png"} alt={"back-arrow"} width={44} height={44} className="object-cover" />
           </button>
 
-          <div>
             <h1 className="font-medium text-2xl text-[#202020]">
               {course.title}
             </h1>
             {/* <Tag color="#EAF3FF" className="mt-1 px-3 py-1 text-[#0A60E1] border-none">
               {course.category}
             </Tag> */}
-               <p color="#EAF3FF" className="mt-1 px-3 py-1 text-[#0A60E1] border-none">
+               <p color="#EAF3FF" className=" px-3 py-1 text-[#0A60E1] border-none">
               {course.category}
             </p>
-          </div>
         </div>
 
         <button className="bg-[#0A60E1] text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition">
@@ -154,7 +148,7 @@ export default function CourseDetailPage() {
       {/* Hero banner */}
       <div className="relative h-64 md:h-80 rounded-xl overflow-hidden">
         <Image
-          src={course.image} // replace with your actual banner image
+          src={course.image}
           alt="Course banner"
           fill
           className="object-cover"
