@@ -26,7 +26,7 @@ export default function CourseCard({ course }: { course: Course }) {
         {/* Image - kept your height */}
         <div className="relative h-32">
           <Image
-            src={course.image}
+            src={course.image || "/icons/course-mgt.png"}
             alt={course.title}
             fill
             className="object-cover"

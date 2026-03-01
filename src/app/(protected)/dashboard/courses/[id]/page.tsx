@@ -3,7 +3,6 @@
 
 import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { ArrowLeft } from 'lucide-react';
 import { Table, Tag } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import StatsCard from '@/src/components/ui/StatCard';
@@ -87,7 +86,10 @@ export default function CourseDetailPage() {
       render: (text, record) => (
         <div className="flex items-center gap-3">
           <div className="h-10 w-10 rounded-full overflow-hidden">
-            <Image src={record.avatar} alt={text} width={40} height={40} className="object-cover" />
+            <Image 
+           src={record.avatar || "/avatars/Nithya.png"}
+
+             alt={text} width={40} height={40} className="object-cover" />
           </div>
           <span className="font-medium text-[#202020]">{text}</span>
         </div>
@@ -106,15 +108,25 @@ export default function CourseDetailPage() {
       render: (text) => <span className="text-[#636363]">{text}</span>,
     },
     {
-      title: 'Actions',
-      key: 'actions',
-      width: 80,
-      render: () => (
-        <button className="text-[#0A60E1] hover:text-blue-700">
-            <Image src={"/icons/message-text.png"} alt={"message-text"} width={24} height={24} className="object-cover" />
-        </button>
-      ),
-    },
+    title: 'Actions',
+    key: 'actions',
+    width: 80,
+    render: () => (
+      <button
+        onClick={() => router.push(`/dashboard/courses/${id}/learn`)}
+        className="text-[#0A60E1] hover:text-blue-700 transition-colors p-1 rounded hover:bg-blue-50"
+      >
+        <Image
+          src="/icons/message-text.png"
+          alt="View lessons"
+          width={24}
+          height={24}
+          className="object-cover"
+        />
+      </button>
+    ),
+  },
+
   ];
 
   return (
@@ -148,7 +160,7 @@ export default function CourseDetailPage() {
       {/* Hero banner */}
       <div className="relative h-64 md:h-80 rounded-xl overflow-hidden">
         <Image
-          src={course.image}
+           src={course.image || "/images/communication.png"}
           alt="Course banner"
           fill
           className="object-cover"
