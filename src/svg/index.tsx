@@ -1,3 +1,4 @@
+//src/svg/index.tsx
 interface NavIconProps {
   className?: string;
   stroke?: string; // main color
@@ -280,4 +281,108 @@ export const SettingsIcon = ({
       strokeLinejoin="round"
     />
   </svg>
+);
+
+
+// plane circle svg to be refactored to take same blue color as each lesson color when the lesson is still ongoing
+{/* <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z" stroke="#0A60E1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg> */}
+
+export const CircleOutlineIcon = ({
+  stroke = "#0A60E1",
+  width = 20,
+  height = 20,
+  className,
+}: NavIconProps) => (
+  <svg
+    className={className}
+    width={width}
+    height={height}
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    <path
+      d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+      stroke={stroke}
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+
+// circle-tick svg to be refactored which also takes same color as each lesson, replaces above when lesson is marked complete
+{/* <svg
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+    stroke="#0A60E1"
+    stroke-width="1.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M7.75 12L10.58 14.83L16.25 9.16998"
+    stroke="#0A60E1"
+    stroke-width="1.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>; */}
+
+export const CircleTickIcon = ({
+  stroke = "#0A60E1",
+  width = 20,
+  height = 20,
+  className,
+}: NavIconProps) => (
+  <svg
+    className={className}
+    width={width}
+    height={height}
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    <path
+      d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+      stroke={stroke}
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M7.75 12L10.58 14.83L16.25 9.16998"
+      stroke={stroke}
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+
+// // circle-tick svg to be refactored which takes #019401 as border and check mark color positioned sidee by side of the chevron down in the same line as the title when all lessons in a title are completed and the collapsible is collapsed
+// <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+// <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z" stroke="#019401" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+// <path d="M7.75 12L10.58 14.83L16.25 9.16998" stroke="#019401" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+// </svg>
+
+export const ModuleCompletedIcon = ({
+  width = 20,
+  height = 20,
+  className,
+}: NavIconProps) => (
+  <CircleTickIcon
+    width={width}
+    height={height}
+    stroke="#019401"
+    className={className}
+  />
 );

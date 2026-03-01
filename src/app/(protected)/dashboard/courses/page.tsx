@@ -41,19 +41,26 @@ export default function CoursesPage() {
         </p>
       </div>
 
-      {/* Stats – restored original container & style */}
+      {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {statsData.map((stat, i) => (
           <StatsCard key={i} {...stat} />
         ))}
       </div>
 
-      {/* Main content card – restored bg & padding */}
+      {/* Main content card */}
       <div className="p-0 md:p-5 rounded-xl flex flex-col gap-8 bg-[#fcfcfc]">
         {/* Search + filter – almost exact original */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <div className="relative h-11 w-full sm:w-[60%] px-4 py-2 border border-[#F0F0F0] hover:border-blue-200 focus:outline-blue-200 rounded-full">
-            <input type="text" placeholder="Search Course" />
+          <div
+            className="relative h-11 w-h sm:w-[60%] "
+            // className="relative h-11 w-full sm:w-[60%] px-4  border border-[#F0F0F0] hover:border-blue-200 focus:outline-blue-200 rounded-full"
+          >
+            <input
+              type="text"
+              placeholder="Search Course"
+              className="w-full h-full px-4  border border-gray-300 hover:border-blue-200 focus:outline-blue-200 rounded-4xl"
+            />
             <Image
               src={"/icons/search-normal.png"}
               width={20}
@@ -84,7 +91,6 @@ export default function CoursesPage() {
           </div>
         </div>
 
-        {/* Course grid – columns: 1 → 2 → 3 → 4 only on very large screens */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-5">
           {paginated.map((course) => (
             <CourseCard key={course.id} course={course} />
@@ -102,6 +108,8 @@ export default function CoursesPage() {
     </div>
   );
 }
+
+
 
 // // app/dashboard/courses/page.tsx  ← Screen 1 PREVIOUS VERSION
 // import CourseCard from "@/src/components/ui/CourseCard";
