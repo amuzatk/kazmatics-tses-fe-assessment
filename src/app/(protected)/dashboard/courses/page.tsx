@@ -51,7 +51,7 @@ export default function CoursesPage() {
       </div>
 
       {/* Main content card – restored bg & padding */}
-      <div className="p-5 rounded-xl flex flex-col gap-8 bg-[#fcfcfc]">
+      <div className="p-0 md:p-5 rounded-xl flex flex-col gap-8 bg-[#fcfcfc]">
         {/* Search + filter – almost exact original */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div 
@@ -79,7 +79,6 @@ export default function CoursesPage() {
 
         {/* Course grid – columns: 1 → 2 → 3 → 4 only on very large screens */}
         <div 
-        // className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5"
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-5"
         >
           {paginated.map((course) => (
