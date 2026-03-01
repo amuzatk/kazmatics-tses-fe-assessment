@@ -7,13 +7,13 @@ type Course = {
   title: string;
   description: string;
   category: string;
-  image: string;
+  image?: string;
 };
 
 export default function CourseCard({ course }: { course: Course }) {
   return (
     <Link href={`/dashboard/courses/${course.id}`} className="block group">
-      <div 
+      <div
         className="
           bg-[#f7f7f7] 
           rounded-xl 
@@ -36,7 +36,7 @@ export default function CourseCard({ course }: { course: Course }) {
 
         {/* Content */}
         <div className="p-3">
-          <h3 
+          <h3
             className="
               font-semibold 
               text-lg 
@@ -53,7 +53,7 @@ export default function CourseCard({ course }: { course: Course }) {
             {course.description}
           </p>
 
-          <span 
+          <span
             className="
               inline-block 
               bg-[#E8E8E8] 
@@ -72,10 +72,6 @@ export default function CourseCard({ course }: { course: Course }) {
   );
 }
 
-
-
-
-
 // // components/ui/CourseCard.tsx
 // import Link from "next/link";
 // import Image from "next/image";
@@ -91,7 +87,7 @@ export default function CourseCard({ course }: { course: Course }) {
 // export default function CourseCard({ course }: { course: Course }) {
 //   return (
 //     <Link href={`/courses/${course.id}`} className="block group">
-//       <div 
+//       <div
 //     //   className="bg-[#f7f7f7] rounded-xl overflow-hidden max-h-67.25 hover:shadow-md transition-shadow"
 //     className="bg-[#f7f7f7] rounded-xl overflow-hidden hover:shadow-md transition-shadow"
 //       >
