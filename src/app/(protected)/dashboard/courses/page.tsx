@@ -49,7 +49,7 @@ export default function CoursesPage() {
       </div>
 
       {/* Main content card */}
-      <div className="p-0 md:p-5 rounded-xl flex flex-col gap-8 bg-[#fcfcfc]">
+      <div className="p-0 md:p-5 pb-10 rounded-xl flex flex-col gap-8 bg-[#fcfcfc]">
         {/* Search + filter – almost exact original */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div
