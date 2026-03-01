@@ -1,0 +1,198 @@
+// app/dashboard/courses/[id]/page.tsx
+'use client';
+
+import { useParams, useRouter } from 'next/navigation';
+import Image from 'next/image';
+import { ArrowLeft } from 'lucide-react';
+import { Table, Tag } from 'antd';
+import type { ColumnsType } from 'antd/es/table';
+import StatsCard from '@/src/components/ui/StatCard';
+import Pagination from '@/src/components/ui/Pagination';
+import { mockCourses } from '@/src/utils/constants';
+import { useState } from 'react';
+
+// Mock learners data (you can move to separate file or RTK Query later)
+const mockLearners = [
+  { id: 1, name: 'Nithya Menon', avatar: '/avatars/Nithya.png', city: 'New York', email: 'nithya.menon@email.com' },
+  { id: 2, name: 'Meera Gonzalez', avatar: '/avatars/Nithya.png', city: 'Toronto', email: 'meera.gonzalez@email.com' },
+  { id: 3, name: 'Monica Patel', avatar: '/avatars/Nithya.png', city: 'Paris', email: 'monica.patel@email.com' },
+  { id: 4, name: 'Dinesh Kumar', avatar: '/avatars/Nithya.png', city: 'Tokyo', email: 'dinesh.kumar@email.com' },
+  { id: 5, name: 'Karthik Subramanian', avatar: '/avatars/Nithya.png', city: 'London', email: 'karthik.subramanian@email.com' },
+  { id: 6, name: 'Jagathesh Narayanan', avatar: '/avatars/Nithya.png', city: 'Berlin', email: 'jagathesh.narayanan@email.com' },
+{ id: 7, name: 'Nithya Menon', avatar: '/avatars/Nithya.png', city: 'New York', email: 'nithya.menon@email.com' },
+  { id: 8, name: 'Meera Gonzalez', avatar: '/avatars/Nithya.png', city: 'Toronto', email: 'meera.gonzalez@email.com' },
+  { id:9, name: 'Monica Patel', avatar: '/avatars/Nithya.png', city: 'Paris', email: 'monica.patel@email.com' },
+  { id: 10, name: 'Dinesh Kumar', avatar: '/avatars/Nithya.png', city: 'Tokyo', email: 'dinesh.kumar@email.com' },
+  { id: 11, name: 'Karthik Subramanian', avatar: '/avatars/Nithya.png', city: 'London', email: 'karthik.subramanian@email.com' },
+  { id: 12, name: 'Jagathesh Narayanan', avatar: '/avatars/Nithya.png', city: 'Berlin', email: 'jagathesh.narayanan@email.com' },
+{ id: 13, name: 'Nithya Menon', avatar: '/avatars/Nithya.png', city: 'New York', email: 'nithya.menon@email.com' },
+  { id: 14, name: 'Meera Gonzalez', avatar: '/avatars/Nithya.png', city: 'Toronto', email: 'meera.gonzalez@email.com' },
+  { id: 15, name: 'Monica Patel', avatar: '/avatars/Nithya.png', city: 'Paris', email: 'monica.patel@email.com' },
+  { id: 16, name: 'Dinesh Kumar', avatar: '/avatars/Nithya.png', city: 'Tokyo', email: 'dinesh.kumar@email.com' },
+  { id: 17, name: 'Karthik Subramanian', avatar: '/avatars/Nithya.png', city: 'London', email: 'karthik.subramanian@email.com' },
+  { id: 18, name: 'Jagathesh Narayanan', avatar: '/avatars/Nithya.png', city: 'Berlin', email: 'jagathesh.narayanan@email.com' },
+{ id: 19, name: 'Nithya Menon', avatar: '/avatars/Nithya.png', city: 'New York', email: 'nithya.menon@email.com' },
+  { id: 20, name: 'Meera Gonzalez', avatar: '/avatars/Nithya.png', city: 'Toronto', email: 'meera.gonzalez@email.com' },
+  { id: 21, name: 'Monica Patel', avatar: '/avatars/Nithya.png', city: 'Paris', email: 'monica.patel@email.com' },
+  { id: 22, name: 'Dinesh Kumar', avatar: '/avatars/Nithya.png', city: 'Tokyo', email: 'dinesh.kumar@email.com' },
+  { id: 23, name: 'Karthik Subramanian', avatar: '/avatars/Nithya.png', city: 'London', email: 'karthik.subramanian@email.com' },
+  { id: 24, name: 'Jagathesh Narayanan', avatar: '/avatars/Nithya.png', city: 'Berlin', email: 'jagathesh.narayanan@email.com' },
+{ id: 25, name: 'Nithya Menon', avatar: '/avatars/Nithya.png', city: 'New York', email: 'nithya.menon@email.com' },
+  { id: 26, name: 'Meera Gonzalez', avatar: '/avatars/Nithya.png', city: 'Toronto', email: 'meera.gonzalez@email.com' },
+  { id: 27, name: 'Monica Patel', avatar: '/avatars/Nithya.png', city: 'Paris', email: 'monica.patel@email.com' },
+  { id: 28, name: 'Dinesh Kumar', avatar: '/avatars/Nithya.png', city: 'Tokyo', email: 'dinesh.kumar@email.com' },
+  { id: 29, name: 'Karthik Subramanian', avatar: '/avatars/Nithya.png', city: 'London', email: 'karthik.subramanian@email.com' },
+  { id: 30, name: 'Jagathesh Narayanan', avatar: '/avatars/Nithya.png', city: 'Berlin', email: 'jagathesh.narayanan@email.com' },
+];
+
+const ITEMS_PER_PAGE = 10;
+
+export default function CourseDetailPage() {
+  const { id } = useParams();
+  const router = useRouter();
+
+  const course = mockCourses.find((c) => c.id === id);
+
+  if (!course) {
+    return <div className="p-8 text-center">Course not found</div>;
+  }
+
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const totalPages = Math.ceil(mockLearners.length / ITEMS_PER_PAGE);
+  const start = (currentPage - 1) * ITEMS_PER_PAGE;
+  const paginatedLearners = mockLearners.slice(start, start + ITEMS_PER_PAGE);
+
+  // Stats data for this page
+  const statsData = [
+    {
+      icon: '/icons/applicants.png',
+      title: 'Total Applicants',
+      value: '1223',
+      trendColor: 'text-[#00B000]',
+    },
+    {
+      icon: '/icons/Learners.png',
+      title: 'Active Learners',
+      value: '13',
+    },
+  ];
+
+  // Ant Design Table columns
+  const columns: ColumnsType<typeof mockLearners[0]> = [
+    {
+      title: 'Name',
+      dataIndex: 'name',
+      key: 'name',
+      render: (text, record) => (
+        <div className="flex items-center gap-3">
+          <div className="h-10 w-10 rounded-full overflow-hidden">
+            <Image src={record.avatar} alt={text} width={40} height={40} className="object-cover" />
+          </div>
+          <span className="font-medium text-[#202020]">{text}</span>
+        </div>
+      ),
+    },
+    {
+      title: 'City',
+      dataIndex: 'city',
+      key: 'city',
+      render: (text) => <span className="text-[#636363]">{text}</span>,
+    },
+    {
+      title: 'Email Address',
+      dataIndex: 'email',
+      key: 'email',
+      render: (text) => <span className="text-[#636363]">{text}</span>,
+    },
+    {
+      title: 'Actions',
+      key: 'actions',
+      width: 80,
+      render: () => (
+        <button className="text-[#0A60E1] hover:text-blue-700">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 10.8333C10.4602 10.8333 10.8333 10.4602 10.8333 10C10.8333 9.53977 10.4602 9.16667 10 9.16667C9.53977 9.16667 9.16667 9.53977 9.16667 10C9.16667 10.4602 9.53977 10.8333 10 10.8333Z" fill="#0A60E1"/>
+            <path d="M10 5.83333C10.4602 5.83333 10.8333 5.46023 10.8333 5C10.8333 4.53977 10.4602 4.16667 10 4.16667C9.53977 4.16667 9.16667 4.53977 9.16667 5C9.16667 5.46023 9.53977 5.83333 10 5.83333Z" fill="#0A60E1"/>
+            <path d="M10 15.8333C10.4602 15.8333 10.8333 15.4602 10.8333 15C10.8333 14.5398 10.4602 14.1667 10 14.1667C9.53977 14.1667 9.16667 14.5398 9.16667 15C9.16667 15.4602 9.53977 15.8333 10 15.8333Z" fill="#0A60E1"/>
+          </svg>
+        </button>
+      ),
+    },
+  ];
+
+  return (
+    <div className="space-y-6 pb-10">
+      {/* Header with back arrow, title, category, button */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div className="flex items-center gap-4">
+          <button
+            onClick={() => router.back()}
+            className="p-2 rounded-full hover:bg-gray-100 transition"
+          >
+            <ArrowLeft className="h-6 w-6 text-[#636363]" />
+          </button>
+
+          <div>
+            <h1 className="font-medium text-2xl text-[#202020]">
+              {course.title}
+            </h1>
+            {/* <Tag color="#EAF3FF" className="mt-1 px-3 py-1 text-[#0A60E1] border-none">
+              {course.category}
+            </Tag> */}
+               <p color="#EAF3FF" className="mt-1 px-3 py-1 text-[#0A60E1] border-none">
+              {course.category}
+            </p>
+          </div>
+        </div>
+
+        <button className="bg-[#0A60E1] text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition">
+          Start Learning
+        </button>
+      </div>
+
+      {/* Hero banner */}
+      <div className="relative h-64 md:h-80 rounded-xl overflow-hidden">
+        <Image
+          src={course.image} // replace with your actual banner image
+          alt="Course banner"
+          fill
+          className="object-cover"
+        />
+      </div>
+
+      {/* Stats row */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {statsData.map((stat, i) => (
+          <StatsCard key={i} {...stat} />
+        ))}
+      </div>
+
+      {/* Learners Table */}
+      <div className="bg-white rounded-xl border border-[#F0F0F0] overflow-hidden">
+        <div className="p-5 border-b border-[#F0F0F0]">
+          <h3 className="font-medium text-lg text-[#202020]">Learners</h3>
+        </div>
+
+        <Table
+          columns={columns}
+          dataSource={paginatedLearners}
+          rowKey="id"
+          pagination={false}
+          className="border-none"
+          scroll={{ x: 'max-content' }}
+        />
+
+        {/* Pagination */}
+        <div className="p-5 border-t border-[#F0F0F0]">
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            setCurrentPage={setCurrentPage}
+            showItemsPerPage={true}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}

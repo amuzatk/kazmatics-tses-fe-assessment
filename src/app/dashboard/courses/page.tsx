@@ -6,6 +6,7 @@ import Image from 'next/image';
 import CourseCard from '@/src/components/ui/CourseCard';
 import { mockCourses } from '@/src/utils/constants';
 import StatsCard from '@/src/components/ui/StatCard';
+import Pagination from '@/src/components/ui/Pagination';
 
 const ITEMS_PER_PAGE = 10;
 
@@ -30,7 +31,6 @@ export default function CoursesPage() {
 
   return (
     <div 
-    // className="space-y-8 px-4 py-6 md:px-8 lg:px-10 bg-[#F9FAFB] min-h-screen  border border-amber-500 "
     className="space-y-8 "
     >
       {/* Header */}
@@ -54,11 +54,17 @@ export default function CoursesPage() {
       <div className="p-5 rounded-xl flex flex-col gap-8 bg-[#fcfcfc]">
         {/* Search + filter – almost exact original */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <input
-            type="text"
-            placeholder="Search Course"
-            className="w-full sm:w-[60%] px-4 py-2 border border-[#F0F0F0] hover:border-blue-200 focus:outline-blue-200 rounded-full"
-          />
+            <div 
+            className="relative h-11 w-full sm:w-[60%] px-4 py-2 border border-[#F0F0F0] hover:border-blue-200 focus:outline-blue-200 rounded-full"
+            >
+                           <input
+                    type="text"
+                    placeholder="Search Course"                     
+                  />
+                    <Image src={"/icons/search-normal.png"} width={20} height={20} alt={"Search Icon"}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400"
+                    />
+                  </div>
           <div className="flex gap-4">
             <button className="px-5 py-2.5 border border-[#E8E8E8] text-[#636363] text-[14px] rounded-full flex items-center gap-2 hover:bg-gray-50">
               Date
@@ -81,65 +87,13 @@ export default function CoursesPage() {
           ))}
         </div>
 
-        {/* Pagination – improved but close to original visual */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-4">
-          <button className="px-5 py-2.5 border border-[#E8E8E8] text-[#636363] text-[14px] rounded-full flex items-center justify-center gap-2 w-full sm:w-auto">
-            Show 10/page
-            <Image src="/icons/arrow-down.png" width={20} height={20} alt="down" />
-          </button>
-
-          <div className="flex items-center gap-3 justify-center sm:justify-end">
-            <button
-              disabled={currentPage === 1}
-              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-              className="text-[#8C8C8C] text-[16px] disabled:opacity-50"
-            >
-              Prev
-            </button>
-
-            <div className="flex gap-2">
-              {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
-                const page = i + 1;
-                return (
-                  <button
-                    key={page}
-                    onClick={() => setCurrentPage(page)}
-                    className={`w-8 h-8 flex items-center justify-center text-[14px] rounded-full ${
-                      currentPage === page
-                        ? 'bg-[#0A60E1] text-white'
-                        : 'bg-[#fdfdfd] border border-[#E8E8E8] text-[#0A60E1]'
-                    }`}
-                  >
-                    {page.toString().padStart(2, '0')}
-                  </button>
-                );
-              })}
-
-              {totalPages > 5 && <span className="flex items-center text-[#0A60E1]">...</span>}
-
-              {totalPages > 5 && (
-                <button
-                  onClick={() => setCurrentPage(totalPages)}
-                  className={`w-8 h-8 flex items-center justify-center text-[14px] rounded-full ${
-                    currentPage === totalPages
-                      ? 'bg-[#0A60E1] text-white'
-                      : 'bg-[#fdfdfd] border border-[#E8E8E8] text-[#0A60E1]'
-                  }`}
-                >
-                  {totalPages.toString().padStart(2, '0')}
-                </button>
-              )}
-            </div>
-
-            <button
-              disabled={currentPage === totalPages}
-              onClick={() => setCurrentPage((p) => p + 1)}
-              className="text-[#0A60E1] text-[16px] disabled:opacity-50"
-            >
-              Next
-            </button>
-          </div>
-        </div>
+        {/* Reusable Pagination */}
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          setCurrentPage={setCurrentPage}
+          showItemsPerPage={true}
+        />
       </div>
     </div>
   );
