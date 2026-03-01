@@ -89,7 +89,7 @@ export default function Pagination({
                 className={`w-8 h-8 flex items-center justify-center text-[14px] rounded-full transition-colors ${
                   isActive
                     ? 'bg-[#0A60E1] text-white'
-                    : 'bg-[#fdfdfd] border border-[#E8E8E8] text-[#0A60E1] hover:bg-gray-50'
+                    : 'bg-[#fdfdfd] border border-[#0A60E1] text-[#0A60E1] hover:bg-gray-50'
                 }`}
               >
                 {(page as number).toString().padStart(2, '0')}

@@ -147,7 +147,7 @@ export default function CourseDetailPage() {
             {/* <Tag color="#EAF3FF" className="mt-1 px-3 py-1 text-[#0A60E1] border-none">
               {course.category}
             </Tag> */}
-               <p color="#EAF3FF" className=" px-3 py-1 text-[#0A60E1] border-none">
+                                   <p className="bg-[#E1F5FE] px-5 py-2 rounded-[100px] text-[#035177] border-none">
               {course.category}
             </p>
         </div>
