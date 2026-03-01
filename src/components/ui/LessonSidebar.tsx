@@ -36,12 +36,14 @@ export default function LessonSidebar({
   onModuleChange,
   onLessonClick,
 }: Props) {
-  const isLessonComplete = (key: string) =>
-    completedLessons.has(key);
+  const isLessonComplete = (key: string) => completedLessons.has(key);
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 p-5">
-      <div className="space-y-4">
+    <div className="bg-white rounded-xl border border-gray-200 ">
+      <div className="border-b h-10 flex justify-items-start items-center pl-5 border-[#D9D9D9] ">
+        <p className="text-[14px]  text-[#636363] "> Lessons (0/32)</p>
+      </div>
+      <div className="space-y-4 p-5">
         {modules.map((module) => {
           const isOpen = activeModule === module.key;
 
@@ -49,11 +51,10 @@ export default function LessonSidebar({
             isLessonComplete(l.key),
           ).length;
 
-          const allComplete =
-            module.isQuiz
-              ? completedLessons.has("assessment")
-              : module.lessons.length > 0 &&
-                completedCount === module.lessons.length;
+          const allComplete = module.isQuiz
+            ? completedLessons.has("assessment")
+            : module.lessons.length > 0 &&
+              completedCount === module.lessons.length;
 
           return (
             <div key={module.key}>
@@ -62,7 +63,7 @@ export default function LessonSidebar({
                 onClick={() => onModuleChange(module.key)}
                 className="w-full flex items-center justify-between py-2 text-left"
               >
-                <span className="font-medium text-[#202020] text-sm">
+                <span className="font-bold text-[#202020] text-[16px]">
                   {module.title}
                 </span>
 
@@ -85,31 +86,22 @@ export default function LessonSidebar({
 
               {/* LESSONS */}
               {isOpen && !module.isQuiz && (
-                <div className="mt-3 space-y-2">
+                <div className="mt-3 space-y-2 ">
                   {module.lessons.map((lesson) => {
-                    const completed = isLessonComplete(
-                      lesson.key,
-                    );
+                    const completed = isLessonComplete(lesson.key);
 
-                    const isActive =
-                      activeLesson === lesson.key;
+                    const isActive = activeLesson === lesson.key;
 
-                    // 👇 IMPORTANT: Determine if lesson has started
-                    const hasStarted =
-                      completed || isActive;
+                    // IMPORTANT: Determine if lesson has started
+                    const hasStarted = completed || isActive;
 
                     return (
                       <div
                         key={lesson.key}
-                        onClick={() =>
-                          onLessonClick(
-                            module.key,
-                            lesson.key,
-                          )
-                        }
+                        onClick={() => onLessonClick(module.key, lesson.key)}
                         className={`
                           flex items-center justify-between
-                          px-4 py-3 rounded-lg
+                          px-4 py-3 rounded-xl
                           cursor-pointer transition
                           ${
                             hasStarted
@@ -119,32 +111,18 @@ export default function LessonSidebar({
                         `}
                       >
                         {/* TITLE */}
-                        {/* <span
+                        <span
                           className={`
-                            text-sm
-                            ${
-                              isActive
-                                ? "text-[#0A60E1] font-medium"
-                                : completed
-                                ? "text-gray-700"
-                                : "text-gray-600"
-                            }
-                          `}
+    text-[14px]
+    ${hasStarted ? "text-[#0A60E1]" : "text-gray-600"}
+  `}
                         >
                           {lesson.title}
-                        </span> */}
-                        <span
-  className={`
-    text-sm
-    ${hasStarted ? "text-[#0A60E1] font-medium" : "text-gray-600"}
-  `}
->
-  {lesson.title}
-</span>
+                        </span>
 
                         {/* RIGHT ICON */}
-                        {hasStarted && (
-                          completed ? (
+                        {hasStarted &&
+                          (completed ? (
                             <CircleTickIcon
                               width={18}
                               height={18}
@@ -156,8 +134,7 @@ export default function LessonSidebar({
                               height={18}
                               stroke="#0A60E1"
                             />
-                          )
-                        )}
+                          ))}
                       </div>
                     );
                   })}
@@ -177,10 +154,6 @@ export default function LessonSidebar({
     </div>
   );
 }
-
-
-
-
 
 // // //src/components/ui/LessonSidebar.tsx
 // "use client";

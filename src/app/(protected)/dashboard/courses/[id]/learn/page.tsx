@@ -14,78 +14,98 @@ import { courseModules } from "@/src/utils/courseModules";
 // MODULE DATA
 // ==============================
 
-// const modules = [
-//   {
-//     key: "introduction",
-//     title: "Introduction",
-//     lessons: [
-//       {
-//         key: "welcome",
-//         title: "Welcome Message",
-//         body: "Welcome to the course...",
-//       },
-//       { key: "note-style", title: "A Note on Style", body: "..." },
-//       { key: "what-learn", title: "What You'll Learn", body: "..." },
-//       { key: "instructor", title: "Meet Your Instructor", body: "..." },
-//     ],
-//   },
-//   {
-//     key: "setup",
-//     title: "Setting Up Your Workspace",
-//     lessons: [
-//       {
-//         key: "setup-1",
-//         title: "Lesson 1 - Workspace Basics",
-//         body: "Step-by-step setup guide...",
-//       },
-//       {
-//         key: "setup-2",
-//         title: "Lesson 2 - Tools & Notifications",
-//         body: "Configuring alerts and preferences...",
-//       },
-//     ],
-//   },
-//   {
-//     key: "navigate",
-//     title: "Navigating the Course",
-//     lessons: [
-//       {
-//         key: "navigate-1",
-//         title: "Lesson 1 - Platform Overview",
-//         body: "...",
-//       },
-//       {
-//         key: "navigate-2",
-//         title: "Lesson 2 - Progress Tracking",
-//         body: "How to track your learning progress...",
-//       },
-//     ],
-//   },
-//   {
-//     key: "resources",
-//     title: "Course Resources",
-//     lessons: [
-//       {
-//         key: "resources-1",
-//         title: "Lesson 1 - Downloads & PDFs",
-//         body: "Accessing downloadable materials...",
-//       },
-//       {
-//         key: "resources-2",
-//         title: "Lesson 2 - External Links",
-//         body: "Recommended external resources...",
-//       },
-//     ],
-//   },
-//   {
-//     key: "assessment",
-//     title: "Assessment",
-//     isQuiz: true,
-//     lessons: [],
-//   },
-// ];
+const modules = [
+  {
+    key: "introduction",
+    title: "Introduction",
+    lessons: [
+      {
+        key: "welcome",
+        title: "Lesson 1 - Welcome Message",
+        body: `Welcome to 'Communicate with Confidence'! In an era where the pace of work is ever-increasing and the demands on our time are relentless, the ability to communicate effectively has never been more crucial. This comprehensive course is meticulously crafted to equip you with the essential skills that will not only enhance your communication abilities but also empower you to thrive in any professional environment you find yourself in.
+Why Communication Matters this journey to transform your communication skills and unlock new heights in your career! Together, we will explore the depths of effective communication, ensuring that you emerge not just as a better communicator, but as a leader in your field.`,
+      },
+      {
+        key: "note-style",
+        title: "A Note on Style",
+        body: `Welcome to 'Communicate with Confidence'! In an era where the pace of work is ever-increasing and the demands on our time are relentless, the ability to communicate effectively has never been more crucial. This comprehensive course is meticulously crafted to equip you with the essential skills that will not only enhance your communication abilities but also empower you to thrive in any professional environment you find yourself in.
+Why Communication Matters this journey to transform your communication skills and unlock new heights in your career! Together, we will explore the depths of effective communication, ensuring that you emerge not just as a better communicator, but as a leader in your field.`,
+      },
+      {
+        key: "what-learn",
+        title: "What You'll Learn",
+        body: `Welcome to 'Communicate with Confidence'! In an era where the pace of work is ever-increasing and the demands on our time are relentless, the ability to communicate effectively has never been more crucial. This comprehensive course is meticulously crafted to equip you with the essential skills that will not only enhance your communication abilities but also empower you to thrive in any professional environment you find yourself in.
+Why Communication Matters this journey to transform your communication skills and unlock new heights in your career! Together, we will explore the depths of effective communication, ensuring that you emerge not just as a better communicator, but as a leader in your field.`,
+      },
+      {
+        key: "instructor",
+        title: "Meet Your Instructor",
+        body: `Welcome to 'Communicate with Confidence'! In an era where the pace of work is ever-increasing and the demands on our time are relentless, the ability to communicate effectively has never been more crucial. This comprehensive course is meticulously crafted to equip you with the essential skills that will not only enhance your communication abilities but also empower you to thrive in any professional environment you find yourself in.
+Why Communication Matters this journey to transform your communication skills and unlock new heights in your career! Together, we will explore the depths of effective communication, ensuring that you emerge not just as a better communicator, but as a leader in your field.`,
+      },
+    ],
+  },
+  {
+    key: "setup",
+    title: "Setting Up Your Workspace",
+    lessons: [
+      {
+        key: "setup-1",
+        title: "Lesson 1 - Workspace Basics",
+        body: `Welcome to 'Communicate with Confidence'! In an era where the pace of work is ever-increasing and the demands on our time are relentless, the ability to communicate effectively has never been more crucial. This comprehensive course is meticulously crafted to equip you with the essential skills that will not only enhance your communication abilities but also empower you to thrive in any professional environment you find yourself in.
+Why Communication Matters this journey to transform your communication skills and unlock new heights in your career! Together, we will explore the depths of effective communication, ensuring that you emerge not just as a better communicator, but as a leader in your field.`,
+      },
+      {
+        key: "setup-2",
+        title: "Lesson 2 - Tools & Notifications",
+        body: `Welcome to 'Communicate with Confidence'! In an era where the pace of work is ever-increasing and the demands on our time are relentless, the ability to communicate effectively has never been more crucial. This comprehensive course is meticulously crafted to equip you with the essential skills that will not only enhance your communication abilities but also empower you to thrive in any professional environment you find yourself in.
+Why Communication Matters this journey to transform your communication skills and unlock new heights in your career! Together, we will explore the depths of effective communication, ensuring that you emerge not just as a better communicator, but as a leader in your field.`,
+      },
+    ],
+  },
+  {
+    key: "navigate",
+    title: "Navigating the Course",
+    lessons: [
+      {
+        key: "navigate-1",
+        title: "Lesson 1 - Platform Overview",
+        body: `Welcome to 'Communicate with Confidence'! In an era where the pace of work is ever-increasing and the demands on our time are relentless, the ability to communicate effectively has never been more crucial. This comprehensive course is meticulously crafted to equip you with the essential skills that will not only enhance your communication abilities but also empower you to thrive in any professional environment you find yourself in.
+Why Communication Matters this journey to transform your communication skills and unlock new heights in your career! Together, we will explore the depths of effective communication, ensuring that you emerge not just as a better communicator, but as a leader in your field.`,
+      },
+      {
+        key: "navigate-2",
+        title: "Lesson 2 - Progress Tracking",
+        body: `Welcome to 'Communicate with Confidence'! In an era where the pace of work is ever-increasing and the demands on our time are relentless, the ability to communicate effectively has never been more crucial. This comprehensive course is meticulously crafted to equip you with the essential skills that will not only enhance your communication abilities but also empower you to thrive in any professional environment you find yourself in.
+Why Communication Matters this journey to transform your communication skills and unlock new heights in your career! Together, we will explore the depths of effective communication, ensuring that you emerge not just as a better communicator, but as a leader in your field.`,
+      },
+    ],
+  },
+  {
+    key: "resources",
+    title: "Course Resources",
+    lessons: [
+      {
+        key: "resources-1",
+        title: "Lesson 1 - Downloads & PDFs",
+        body: "Accessing downloadable materials...",
+      },
+      {
+        key: "resources-2",
+        title: "Lesson 2 - External Links",
+        body: "Recommended external resources...",
+      },
+    ],
+  },
+  {
+    key: "assessment",
+    title: "Assessment",
+    isQuiz: true,
+    lessons: [],
+  },
+];
 
-const modules = courseModules;
+// const modules = courseModules;
 
 // ==============================
 // COMPONENT
@@ -161,9 +181,9 @@ export default function LessonViewerPage() {
   // ==============================
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-16">
+    <div className="min-h-screen bg-[#f7f7f7] pb-16">
       {/* HEADER */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 px-4 sm:px-6 lg:px-8 pt-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 ">
         <div className="flex flex-col sm:flex-row sm:items-center gap-3">
           <button
             onClick={() => router.back()}
@@ -181,17 +201,17 @@ export default function LessonViewerPage() {
             {course.title}
           </h1>
 
-          <p className="bg-[#E1F5FE] px-5 py-2 rounded-full text-[#035177]">
+          <p className="bg-[#E1F5FE] flex items-center justify-center px-5 py-2 rounded-full text-[#035177]">
             {course.category}
           </p>
         </div>
       </div>
 
       {/* MAIN LAYOUT */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
-        <div className="flex gap-8">
+      <div className="max-w-7xl mx-auto pt-5.5 ">
+        <div className="flex flex-col md:flex-row gap-5.5">
           {/* LEFT SIDE */}
-          <div className="flex-1 space-y-8">
+          <div className="flex-1 space-y-5">
             {/* VIDEO (Hidden when Quiz active) */}
             {!isQuizActive && (
               <div className="rounded-xl overflow-hidden shadow-sm bg-black aspect-video relative">
@@ -209,25 +229,32 @@ export default function LessonViewerPage() {
             {/* TABS */}
             <div className="border-b border-gray-200">
               <nav className="flex space-x-8">
-                <button className="pb-4 border-b-2 border-[#0A60E1] text-[#0A60E1] font-medium">
+                <button className=" p-3 border-b-2 border-[#0A60E1] text-[#0A60E1] text-[16px] ">
                   Course Content
                 </button>
-                <button className="pb-4 text-gray-500">Review/Feedbacks</button>
+                <button className=" text-[16px]  text-gray-500">
+                  Review/Feedbacks
+                </button>
               </nav>
             </div>
 
             {/* LESSON CONTENT */}
             {!isQuizActive && currentLesson.title && (
-              <div className="bg-white rounded-xl border border-gray-200 p-8">
-                <h2 className="text-xl font-semibold mb-6">
-                  {currentLesson.title}
-                </h2>
+              <div className="bg-[#f7f7f7] rounded-xl border border-[#D9D9D9] ">
+                <div className="bg-white rounded-tr-xl rounded-tl-xl ">
+                <div className="border-b h-15 flex justify-items-start items-center p-5 border-[#D9D9D9] ">
+                  <h2 className="text-[14px] text-[#202020] font-bold ">
+                    {currentLesson.title}
+                  </h2>
+                </div>
 
-                <p className="text-gray-600 leading-relaxed whitespace-pre-line">
+                <p className="text-[14px] h-auto p-5 pb-0 text-[#636363]">
                   {currentLesson.body}
                 </p>
 
-                <div className="flex justify-end mt-8">
+                </div>
+
+                <div className="flex justify-end mt-15 mr-5 mb-10 ">
                   <button
                     onClick={() => markComplete(activeLesson)}
                     className="w-57 h-12 
@@ -260,7 +287,7 @@ export default function LessonViewerPage() {
           </div>
 
           {/* RIGHT SIDEBAR */}
-          <div className="w-96">
+          <div className="w-full md:w-96 h-182 ">
             <LessonSidebar
               modules={modules}
               activeModule={activeModule}
