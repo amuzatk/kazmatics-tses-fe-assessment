@@ -198,11 +198,27 @@ export default function LessonViewerPage() {
             />
           </button>
 
-          <h1 className="font-medium text-2xl text-[#202020]">
+              {/* <h1 className="font-medium text-xl sm:text-2xl md:text-2xl text-[#202020]">
             {course.title}
           </h1>
 
-          <p className="bg-[#E1F5FE] flex items-center justify-center px-5 py-2 rounded-full text-[#035177]">
+          <p 
+          className="bg-[#E1F5FE] flex items-center justify-center px-4 py-1.5 text-xs sm:text-[14px] md:text-[14px] rounded-full text-[#035177]"
+          >
+            {course.category}
+          </p> */}
+
+          <h1 
+          // className="font-medium text-2xl text-[#202020]"
+          className="font-medium text-xl sm:text-2xl md:text-2xl text-[#202020]"
+          >
+            {course.title}
+          </h1>
+
+          <p 
+          // className="bg-[#E1F5FE] flex items-center justify-center px-5 py-2 rounded-full text-[#035177]"
+          className="bg-[#E1F5FE] flex items-center justify-center px-4 py-1.5 text-xs sm:text-[14px] md:text-[14px] rounded-full text-[#035177]"
+          >
             {course.category}
           </p>
         </div>
