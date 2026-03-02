@@ -233,6 +233,6 @@ The deployed version matches the GitHub repository codebase.
 
 ## 👤 Author
 
-**Amuzat Kazeem**\
-Frontend Developer\
+**Kazeem Amuzat**\
+Full-Stack DevelEngineer\
 Abuja, Nigeria
