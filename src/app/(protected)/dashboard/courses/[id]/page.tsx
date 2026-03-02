@@ -5,9 +5,9 @@ import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import { Table, Tag } from "antd";
 import type { ColumnsType } from "antd/es/table";
-import StatsCard from "@/src/components/ui/StatCard";
-import Pagination from "@/src/components/ui/Pagination";
-import { mockCourses, mockLearners } from "@/src/utils/constants";
+import StatsCard from "@/components/ui/StatCard";
+import Pagination from "@/components/ui/Pagination";
+import { mockCourses, mockLearners } from "@/utils/constants";
 import { useState } from "react";
 
 const ITEMS_PER_PAGE = 10;

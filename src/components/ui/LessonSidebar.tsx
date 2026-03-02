@@ -5,7 +5,7 @@ import {
   CircleOutlineIcon,
   CircleTickIcon,
   ModuleCompletedIcon,
-} from "@/src/svg";
+} from "@/svg";
 
 interface Lesson {
   key: string;

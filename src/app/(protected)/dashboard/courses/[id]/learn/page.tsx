@@ -5,10 +5,10 @@ import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import { useState } from "react";
 
-import { mockCourses } from "@/src/utils/constants";
-import QuizForm from "@/src/components/ui/QuizForm";
-import LessonSidebar from "@/src/components/ui/LessonSidebar";
-import { courseModules } from "@/src/utils/courseModules";
+import { mockCourses } from "@/utils/constants";
+import QuizForm from "@/components/ui/QuizForm";
+import LessonSidebar from "@/components/ui/LessonSidebar";
+import { courseModules } from "@/utils/courseModules";
 
 // ==============================
 // MODULE DATA

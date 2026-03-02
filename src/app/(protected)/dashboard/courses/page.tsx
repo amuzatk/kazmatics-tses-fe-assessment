@@ -3,10 +3,10 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import CourseCard from "@/src/components/ui/CourseCard";
-import { mockCourses } from "@/src/utils/constants";
-import StatsCard from "@/src/components/ui/StatCard";
-import Pagination from "@/src/components/ui/Pagination";
+import CourseCard from "@/components/ui/CourseCard";
+import { mockCourses } from "@/utils/constants";
+import StatsCard from "@/components/ui/StatCard";
+import Pagination from "@/components/ui/Pagination";
 
 const ITEMS_PER_PAGE = 10;
 

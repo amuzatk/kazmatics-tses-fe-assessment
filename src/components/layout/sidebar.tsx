@@ -7,7 +7,7 @@ import { Menu, Drawer } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import Image from "next/image";
-import { navItems } from "@/src/utils/constants";
+import { navItems } from "@/utils/constants";
 
 export default function Sidebar() {
   const pathname = usePathname();

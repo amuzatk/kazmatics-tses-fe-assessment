@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Sidebar from "../components/layout/sidebar";
+import ReduxProvider from "@/store/provider"
 import Topbar from "../components/layout/topbar";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -20,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        {/* <Providers> */}
+        <ReduxProvider>
         <div className="flex h-screen  bg-[#fcfcfc]  ">
           <Sidebar />
           <div className="flex-1 flex flex-col overflow-hidden bg-[#f7f7f7]  ">
@@ -30,8 +31,28 @@ export default function RootLayout({
             </main>
           </div>
         </div>
-        {/* </Providers> */}
+        </ReduxProvider>
       </body>
     </html>
   );
 }
+
+
+// import "./globals.css"
+// import ReduxProvider from "@/store/provider"
+
+// export default function RootLayout({
+//   children,
+// }: {
+//   children: React.ReactNode
+// }) {
+//   return (
+//     <html lang="en">
+//       <body>
+//         <ReduxProvider>
+//           {children}
+//         </ReduxProvider>
+//       </body>
+//     </html>
+//   )
+// }
