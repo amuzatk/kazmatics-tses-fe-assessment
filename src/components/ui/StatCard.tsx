@@ -26,8 +26,8 @@ export default function StatsCard({
           className="opacity-90"
         />
         <div>
-          <h4 className="text-[16px] text-[#636363]">{title}</h4>
-          <p className="text-[24px] text-[#202020] font-bold mt-1">{value}</p>
+          <h4 className="text-[14px] md:text-[16px] text-[#636363]">{title}</h4>
+          <p className="text-[20px] md:text-[24px] text-[#202020] font-bold mt-1">{value}</p>
         </div>
       </div>
 

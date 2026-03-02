@@ -39,7 +39,8 @@ export default function CourseCard({ course }: { course: Course }) {
           <h3
             className="
               font-semibold 
-              text-lg 
+              text:text-[14px]
+              md:text-lg 
               text-[#202020]
               group-hover:text-[#0A60E1] 
               transition-colors
@@ -57,8 +58,9 @@ export default function CourseCard({ course }: { course: Course }) {
             className="
               inline-block 
               bg-[#E8E8E8] 
-              text-[#636363] 
-              text-xs 
+              text-[#636363]
+              text-sm
+              md:text-xs 
               font-medium 
               rounded-full 
               px-4 py-1
