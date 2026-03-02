@@ -1026,6 +1026,97 @@ export const navItems = [
   { key: "/dashboard/settings", label: "Settings", Icon: SettingsIcon },
 ];
 
+export const modules = [
+  {
+    key: "introduction",
+    title: "Introduction",
+    lessons: [
+      {
+        key: "welcome",
+        title: "Lesson 1 - Welcome Message",
+        body: `Welcome to 'Communicate with Confidence'! In an era where the pace of work is ever-increasing and the demands on our time are relentless, the ability to communicate effectively has never been more crucial. This comprehensive course is meticulously crafted to equip you with the essential skills that will not only enhance your communication abilities but also empower you to thrive in any professional environment you find yourself in.
+Why Communication Matters this journey to transform your communication skills and unlock new heights in your career! Together, we will explore the depths of effective communication, ensuring that you emerge not just as a better communicator, but as a leader in your field.`,
+      },
+      {
+        key: "note-style",
+        title: "A Note on Style",
+        body: `Welcome to 'Communicate with Confidence'! In an era where the pace of work is ever-increasing and the demands on our time are relentless, the ability to communicate effectively has never been more crucial. This comprehensive course is meticulously crafted to equip you with the essential skills that will not only enhance your communication abilities but also empower you to thrive in any professional environment you find yourself in.
+Why Communication Matters this journey to transform your communication skills and unlock new heights in your career! Together, we will explore the depths of effective communication, ensuring that you emerge not just as a better communicator, but as a leader in your field.`,
+      },
+      {
+        key: "what-learn",
+        title: "What You'll Learn",
+        body: `Welcome to 'Communicate with Confidence'! In an era where the pace of work is ever-increasing and the demands on our time are relentless, the ability to communicate effectively has never been more crucial. This comprehensive course is meticulously crafted to equip you with the essential skills that will not only enhance your communication abilities but also empower you to thrive in any professional environment you find yourself in.
+Why Communication Matters this journey to transform your communication skills and unlock new heights in your career! Together, we will explore the depths of effective communication, ensuring that you emerge not just as a better communicator, but as a leader in your field.`,
+      },
+      {
+        key: "instructor",
+        title: "Meet Your Instructor",
+        body: `Welcome to 'Communicate with Confidence'! In an era where the pace of work is ever-increasing and the demands on our time are relentless, the ability to communicate effectively has never been more crucial. This comprehensive course is meticulously crafted to equip you with the essential skills that will not only enhance your communication abilities but also empower you to thrive in any professional environment you find yourself in.
+Why Communication Matters this journey to transform your communication skills and unlock new heights in your career! Together, we will explore the depths of effective communication, ensuring that you emerge not just as a better communicator, but as a leader in your field.`,
+      },
+    ],
+  },
+  {
+    key: "setup",
+    title: "Setting Up Your Workspace",
+    lessons: [
+      {
+        key: "setup-1",
+        title: "Lesson 1 - Workspace Basics",
+        body: `Welcome to 'Communicate with Confidence'! In an era where the pace of work is ever-increasing and the demands on our time are relentless, the ability to communicate effectively has never been more crucial. This comprehensive course is meticulously crafted to equip you with the essential skills that will not only enhance your communication abilities but also empower you to thrive in any professional environment you find yourself in.
+Why Communication Matters this journey to transform your communication skills and unlock new heights in your career! Together, we will explore the depths of effective communication, ensuring that you emerge not just as a better communicator, but as a leader in your field.`,
+      },
+      {
+        key: "setup-2",
+        title: "Lesson 2 - Tools & Notifications",
+        body: `Welcome to 'Communicate with Confidence'! In an era where the pace of work is ever-increasing and the demands on our time are relentless, the ability to communicate effectively has never been more crucial. This comprehensive course is meticulously crafted to equip you with the essential skills that will not only enhance your communication abilities but also empower you to thrive in any professional environment you find yourself in.
+Why Communication Matters this journey to transform your communication skills and unlock new heights in your career! Together, we will explore the depths of effective communication, ensuring that you emerge not just as a better communicator, but as a leader in your field.`,
+      },
+    ],
+  },
+  {
+    key: "navigate",
+    title: "Navigating the Course",
+    lessons: [
+      {
+        key: "navigate-1",
+        title: "Lesson 1 - Platform Overview",
+        body: `Welcome to 'Communicate with Confidence'! In an era where the pace of work is ever-increasing and the demands on our time are relentless, the ability to communicate effectively has never been more crucial. This comprehensive course is meticulously crafted to equip you with the essential skills that will not only enhance your communication abilities but also empower you to thrive in any professional environment you find yourself in.
+Why Communication Matters this journey to transform your communication skills and unlock new heights in your career! Together, we will explore the depths of effective communication, ensuring that you emerge not just as a better communicator, but as a leader in your field.`,
+      },
+      {
+        key: "navigate-2",
+        title: "Lesson 2 - Progress Tracking",
+        body: `Welcome to 'Communicate with Confidence'! In an era where the pace of work is ever-increasing and the demands on our time are relentless, the ability to communicate effectively has never been more crucial. This comprehensive course is meticulously crafted to equip you with the essential skills that will not only enhance your communication abilities but also empower you to thrive in any professional environment you find yourself in.
+Why Communication Matters this journey to transform your communication skills and unlock new heights in your career! Together, we will explore the depths of effective communication, ensuring that you emerge not just as a better communicator, but as a leader in your field.`,
+      },
+    ],
+  },
+  {
+    key: "resources",
+    title: "Course Resources",
+    lessons: [
+      {
+        key: "resources-1",
+        title: "Lesson 1 - Downloads & PDFs",
+        body: "Accessing downloadable materials...",
+      },
+      {
+        key: "resources-2",
+        title: "Lesson 2 - External Links",
+        body: "Recommended external resources...",
+      },
+    ],
+  },
+  {
+    key: "assessment",
+    title: "Assessment",
+    isQuiz: true,
+    lessons: [],
+  },
+];
+
 interface Question {
   id: number;
   question: string;

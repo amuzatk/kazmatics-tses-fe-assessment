@@ -1,4 +1,3 @@
-// src/components/ui/QuizForm.tsx
 "use client";
 
 import { questions } from "@/utils/constants";

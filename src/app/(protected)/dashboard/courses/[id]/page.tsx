@@ -1,4 +1,3 @@
-// app/dashboard/courses/[id]/page.tsx
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
@@ -43,7 +42,6 @@ export default function CourseDetailPage() {
     },
   ];
 
-  // Ant Design Table columns
   const columns: ColumnsType<(typeof mockLearners)[0]> = [
     {
       title: "Name",
