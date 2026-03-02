@@ -1025,3 +1025,74 @@ export const navItems = [
   },
   { key: "/dashboard/settings", label: "Settings", Icon: SettingsIcon },
 ];
+
+interface Question {
+  id: number;
+  question: string;
+  type: "mcq" | "text";
+  icon: string;
+  options?: string[];
+}
+
+export const questions: Question[] = [
+  {
+    id: 1,
+    question: "What is the purpose of React Hooks?",
+    type: "mcq",
+    icon: "/icons/badge.png",
+    options: [
+      "A. To use state and other React features in functional components",
+      "B. To create class components",
+      "C. To style React components",
+      "D. To handle routing in React applications",
+    ],
+  },
+  {
+    id: 2,
+    question: "Which hook is used for side effects in React?",
+    type: "mcq",
+    icon: "/icons/badge.png",
+    options: [
+      "A. To use state and other React features in functional components",
+      "B. To create class components",
+      "C. To style React components",
+      "D. To handle routing in React applications",
+    ],
+  },
+  {
+    id: 3,
+    question: "Explain the Virtual DOM and its benefits",
+    type: "text",
+    icon: "/icons/badge.png",
+  },
+  {
+    id: 4,
+    question: "What is the purpose of React Hooks?",
+    type: "mcq",
+    icon: "/icons/badge.png",
+    options: [
+      "A. To use state and other React features in functional components",
+      "B. To create class components",
+      "C. To style React components",
+      "D. To handle routing in React applications",
+    ],
+  },
+  {
+    id: 5,
+    question: "Which hook is used for side effects in React?",
+    type: "mcq",
+    icon: "/icons/badge.png",
+    options: [
+      "A. To use state and other React features in functional components",
+      "B. To create class components",
+      "C. To style React components",
+      "D. To handle routing in React applications",
+    ],
+  },
+  {
+    id: 6,
+    question: "Explain the Virtual DOM and its benefits",
+    type: "text",
+    icon: "/icons/badge.png",
+  },
+];

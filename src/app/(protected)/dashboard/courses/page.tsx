@@ -32,16 +32,7 @@ export default function CoursesPage() {
   return (
     <div className="space-y-8 ">
       {/* Header */}
-      <div className="mb-5">
-        {/* <h2 className="font-inter font-medium text-[24px] leading-8 text-[#202020]">
-          Course Management
-        </h2>
-        <p className="font-inter font-normal text-[14px] leading-5 text-[#636363]">
-          Create, organize, and assign courses to teams and individuals
-        </p> */}
-
-
-        
+      <div className="mb-5">        
                 <h2 className="font-inter font-medium text-[20px] leading-6 md:text-[24px] md:leading-8 text-[#202020]">
           Course Management
         </h2>
