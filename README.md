@@ -234,5 +234,5 @@ The deployed version matches the GitHub repository codebase.
 ## 👤 Author
 
 **Kazeem Amuzat**\
-Full-Stack DevelEngineer\
+Full-Stack Engineer\
 Abuja, Nigeria
