@@ -1,4 +1,3 @@
-// // src/components/ui/QuizForm.tsx
 "use client";
 
 import Image from "next/image";
@@ -21,14 +20,58 @@ const questions: Question[] = [
     question: "What is the purpose of React Hooks?",
     type: "mcq",
     options: [
-      "To use state and other React features in functional components",
-      "To create class components",
-      "To style React components",
-      "To handle routing in React applications",
+      "A. To use state and other React features in functional components",
+      "B. To create class components",
+      "C. To style React components",
+      "D. To handle routing in React applications",
     ],
   },
   {
     id: 2,
+    question: "Which hook is used for side effects in React?",
+    type: "mcq",
+    options: [
+      "A. To use state and other React features in functional components",
+      "B. To create class components",
+      "C. To style React components",
+      "D. To handle routing in React applications",
+    ],
+  },
+  {
+    id: 3,
+    question: "Which hook is used for side effects in React?",
+    type: "mcq",
+    options: [
+      "A. To use state and other React features in functional components",
+      "B. To create class components",
+      "C. To style React components",
+      "D. To handle routing in React applications",
+    ],
+  },
+  {
+    id: 4,
+    question: "What is the purpose of React Hooks?",
+    type: "mcq",
+    options: [
+      "A. To use state and other React features in functional components",
+      "B. To create class components",
+      "C. To style React components",
+      "D. To handle routing in React applications",
+    ],
+  },
+  {
+    id: 5,
+    question: "Which hook is used for side effects in React?",
+    type: "mcq",
+    options: [
+      "A. To use state and other React features in functional components",
+      "B. To create class components",
+      "C. To style React components",
+      "D. To handle routing in React applications",
+    ],
+  },
+  {
+    id: 6,
     question: "Explain the Virtual DOM and its benefits",
     type: "text",
   },
@@ -37,44 +80,47 @@ const questions: Question[] = [
 export default function QuizForm({ onComplete }: QuizFormProps) {
   const [answers, setAnswers] = useState<Record<number, string>>({});
 
+  const handleAnswerChange = (questionId: number, value: string) => {
+    setAnswers((prev) => ({ ...prev, [questionId]: value }));
+  };
+
   return (
     <div className="bg-white rounded-xl border border-gray-200 p-8">
-      <h2 className="text-xl font-semibold mb-8">Quiz</h2>
+      <div className="bg-[#f7f7f7] rounded-xl border border-[#D9D9D9]">
+        <div className="bg-white rounded-tr-xl rounded-tl-xl">
+          <div className="border-b h-15 flex justify-items-start items-center p-5 border-[#D9D9D9]">
+            <h2 className="text-[14px] text-[#202020] font-bold">Quiz</h2>
+          </div>
 
-      <div className="space-y-10">
-        {questions.map((q) => (
-          <div key={q.id} className="space-y-5">
-            <div className="flex items-start gap-4">
-              {/* Blue Question Number */}
-              <div className="w-8 h-8 rounded-full bg-[#0A60E1] text-white flex items-center justify-center text-sm font-semibold">
-                {q.id}
-              </div>
+          <div className="p-5 space-y-10">
+            {questions.map((q) => (
+              <div key={q.id} className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-[10px] bg-blue-600 text-white flex items-center justify-center text-sm font-bold">
+                    {q.id}
+                  </div>
+                  <h3 className="text-[16px] font-medium text-[#202020]">
+                    {q.question}
+                  </h3>
+                </div>
 
-              <div className="flex-1">
-                <p className="font-medium text-[15px] text-[#202020]">
-                  {q.question}
-                </p>
-
-                {q.type === "mcq" && (
-                  <div className="mt-5 space-y-3">
-                    {q.options?.map((opt, index) => (
+                {q.type === "mcq" && q.options && (
+                  <div className="ml-11 space-y-3">
+                    {q.options.map((option, idx) => (
                       <label
-                        key={index}
-                        className="flex items-center gap-3 border border-gray-200 rounded-lg px-4 py-3 cursor-pointer hover:border-[#0A60E1] transition"
+                        key={idx}
+                        className="flex items-center gap-3 cursor-pointer"
                       >
                         <input
                           type="radio"
-                          name={`q-${q.id}`}
-                          className="accent-[#0A60E1]"
-                          onChange={() =>
-                            setAnswers((prev) => ({
-                              ...prev,
-                              [q.id]: opt,
-                            }))
-                          }
+                          name={`question-${q.id}`}
+                          value={option}
+                          checked={answers[q.id] === option}
+                          onChange={() => handleAnswerChange(q.id, option)}
+                          className="w-5 h-5 accent-[#0063EF]"
                         />
-                        <span className="text-sm text-gray-700">
-                          {opt}
+                        <span className="text-[14px] text-[#202020]">
+                          {option}
                         </span>
                       </label>
                     ))}
@@ -82,82 +128,29 @@ export default function QuizForm({ onComplete }: QuizFormProps) {
                 )}
 
                 {q.type === "text" && (
-                  <textarea
-                    rows={4}
-                    className="mt-4 w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#0A60E1]"
-                    placeholder="Enter answer here"
-                  />
+                  <div className="ml-11">
+                    <textarea
+                      placeholder="Enter answer here"
+                      value={answers[q.id] || ""}
+                      onChange={(e) => handleAnswerChange(q.id, e.target.value)}
+                      className="w-full h-32 p-4 border border-[#D9D9D9] rounded-lg text-[14px] focus:outline-none focus:border-[#0063EF]"
+                    />
+                  </div>
                 )}
               </div>
-            </div>
+            ))}
           </div>
-        ))}
+        </div>
 
-        <div className="flex justify-end pt-6">
+        <div className="flex justify-end mt-10 mr-5 mb-10">
           <button
-  onClick={onComplete}
-  className="w-57 h-12 
-             rounded-lg 
-             px-6 py-3
-             border border-[#0063EF]
-             text-[#0063EF]
-             text-[16px]
-             font-normal
-             hover:bg-[#EAF3FF]
-             transition"
->
-  Submit
-</button>
-          {/* <button
             onClick={onComplete}
-            className="px-8 py-3 rounded-lg bg-[#0A60E1] text-white font-medium hover:bg-blue-700 transition"
+            className="w-57 h-12 rounded-lg px-6 py-3 border border-[#0063EF] text-[#0063EF] text-[16px] font-normal hover:bg-[#EAF3FF] transition"
           >
             Submit
-          </button> */}
+          </button>
         </div>
       </div>
     </div>
   );
 }
-
-
-
-
-// // src/components/ui/QuizForm.tsx
-// interface QuizFormProps {
-//   onComplete: () => void;
-// }
-
-// export default function QuizForm({ onComplete }: QuizFormProps) {
-//   return (
-//     <div className="bg-white rounded-xl shadow p-6">
-//       <h2 className="text-xl font-semibold mb-6">Quiz</h2>
-
-//       <div className="space-y-8">
-//         <div>
-//           <p className="font-medium mb-3">
-//             1. What is the purpose of React Hooks?
-//           </p>
-//           <div className="space-y-2">
-//             <label className="flex items-center gap-2">
-//               <input type="radio" name="q1" />
-//               <span>
-//                 To use state and other features in functional components
-//               </span>
-//             </label>
-//             {/* other options */}
-//           </div>
-//         </div>
-
-//         {/* More questions... */}
-
-//         <button
-//           onClick={onComplete}
-//           className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700"
-//         >
-//           Submit Quiz
-//         </button>
-//       </div>
-//     </div>
-//   );
-// }
