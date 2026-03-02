@@ -93,7 +93,8 @@ export default function Sidebar() {
         placement="left"
         onClose={() => setDrawerOpen(false)}
         open={drawerOpen}
-        size="default"
+        // size="default"
+        size="80%" 
         closable={false}
         styles={{ body: { padding: 0 } }}
       >
