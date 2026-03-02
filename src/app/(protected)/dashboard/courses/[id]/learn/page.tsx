@@ -183,8 +183,9 @@ export default function LessonViewerPage() {
   return (
     <div className="min-h-screen bg-[#f7f7f7] pb-16">
       {/* HEADER */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 ">
-        <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+        <div 
+        className="flex flex-col sm:flex-row sm:items-center gap-3"
+        >
           <button
             onClick={() => router.back()}
             className="rounded-full hover:bg-gray-100 transition"
@@ -205,7 +206,6 @@ export default function LessonViewerPage() {
             {course.category}
           </p>
         </div>
-      </div>
 
       {/* MAIN LAYOUT */}
       <div className="max-w-7xl mx-auto pt-5.5 ">

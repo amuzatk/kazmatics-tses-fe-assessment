@@ -39,11 +39,11 @@ export default function LessonSidebar({
   const isLessonComplete = (key: string) => completedLessons.has(key);
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 ">
+    <div className="bg-white rounded-xl border border-[#D9D9D9] ">
       <div className="border-b h-10 flex justify-items-start items-center pl-5 border-[#D9D9D9] ">
         <p className="text-[14px]  text-[#636363] "> Lessons (0/32)</p>
       </div>
-      <div className="space-y-4 p-5">
+      <div className="space-y-0 p-0">
         {modules.map((module) => {
           const isOpen = activeModule === module.key;
 
@@ -61,7 +61,7 @@ export default function LessonSidebar({
               {/* MODULE HEADER */}
               <button
                 onClick={() => onModuleChange(module.key)}
-                className="w-full flex items-center justify-between py-2 text-left"
+                className="w-full flex items-center justify-between py-5 px-5 text-left"
               >
                 <span className="font-bold text-[#202020] text-[16px]">
                   {module.title}
@@ -69,14 +69,14 @@ export default function LessonSidebar({
 
                 <div className="flex items-center gap-2">
                   {allComplete && !isOpen && (
-                    <ModuleCompletedIcon width={18} height={18} />
+                    <ModuleCompletedIcon width={24} height={24} />
                   )}
 
                   <Image
                     src="/icons/arrow-down.png"
                     alt="chevron"
-                    width={18}
-                    height={18}
+                    width={24}
+                    height={24}
                     className={`transition-transform duration-300 ${
                       isOpen ? "rotate-180" : ""
                     }`}
@@ -86,7 +86,7 @@ export default function LessonSidebar({
 
               {/* LESSONS */}
               {isOpen && !module.isQuiz && (
-                <div className="mt-3 space-y-2 ">
+                <div className="mt-0 ml-3 mr-3 space-y-2 px-0 ">
                   {module.lessons.map((lesson) => {
                     const completed = isLessonComplete(lesson.key);
 
@@ -101,7 +101,7 @@ export default function LessonSidebar({
                         onClick={() => onLessonClick(module.key, lesson.key)}
                         className={`
                           flex items-center justify-between
-                          px-4 py-3 rounded-xl
+                          px-2 py-2.5 rounded-xl
                           cursor-pointer transition
                           ${
                             hasStarted
@@ -124,14 +124,14 @@ export default function LessonSidebar({
                         {hasStarted &&
                           (completed ? (
                             <CircleTickIcon
-                              width={18}
-                              height={18}
+                              width={24}
+                              height={24}
                               stroke="#0A60E1"
                             />
                           ) : (
                             <CircleOutlineIcon
-                              width={18}
-                              height={18}
+                              width={24}
+                              height={24}
                               stroke="#0A60E1"
                             />
                           ))}

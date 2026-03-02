@@ -100,7 +100,7 @@ export default function CourseDetailPage() {
   return (
     <div className="space-y-6 pb-10">
       {/* Header with back arrow, title, category, button */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-4">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <button
             onClick={() => router.back()}
